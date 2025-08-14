@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke Schreiber · AI Visionary</title>
+    <meta name="description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
+    <meta name="keywords" content="AI Visionary, Full Stack Developer, Web Development, AI Projects, React, Node.js">
+    <meta name="author" content="Luke Schreiber">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukeschreiber.github.io/">
+    <meta property="og:title" content="Luke Schreiber · AI Visionary">
+    <meta property="og:description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
+    <meta property="og:image" content="https://lukeschreiber.github.io/hero.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lukeschreiber.github.io/">
+    <meta property="twitter:title" content="Luke Schreiber · AI Visionary">
+    <meta property="twitter:description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
+    <meta property="twitter:image" content="https://lukeschreiber.github.io/hero.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #c9c9c9;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas Background */
+        #starfield-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Minimal Overlay */
+        .nebula-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(40, 40, 40, 0.1) 0%, transparent 70%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 2rem;
+        }
+
+        .content-container {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        /* Typography */
+        .main-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .name-link {
+            color: #e8e8e8;
+            text-decoration: none;
+            text-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(150, 150, 150, 0.1);
+            opacity: 0.95;
+            transition: opacity 0.2s ease;
+        }
+
+        .name-link:hover {
+            opacity: 1.0;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            color: #a8a8a8;
+            margin: 0 0 3.5rem 0;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.01em;
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+            position: relative;
+            min-width: 110px;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: #c9c9c9;
+            border-color: #2a2a2a;
+        }
+
+        .btn-secondary {
+            background: #171717;
+            color: #b8b8b8;
+            border-color: #252525;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:hover {
+            background: #2a2a2a;
+            color: #00d4d4;
+            border-color: #00d4d4;
+            box-shadow: 0 0 15px rgba(0, 212, 212, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #222222;
+            color: #ffffff;
+            border-color: #404040;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        /* External link icon */
+        .external-icon {
+            width: 0.8rem;
+            height: 0.8rem;
+            margin-left: 0.5rem;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn:hover .external-icon {
+            opacity: 1;
+        }
+
+
+
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 260px;
+                padding: 0.875rem 2rem;
+            }
+
+            .main-title {
+                margin: 0 0 1.25rem 0;
+            }
+
+            .subtitle {
+                margin: 0 0 2.75rem 0;
+            }
+        }
+
+        /* Performance optimizations */
+        .btn {
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas Background -->
+    <canvas id="starfield-canvas"></canvas>
+    
+    <!-- Nebula Gradient Overlay -->
+    <div class="nebula-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Name -->
+            <h1 class="main-title">
+                <a href="https://x.com/LukeOlympus" target="_blank" rel="noopener noreferrer" class="name-link">Luke Schreiber</a>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="subtitle">Engineering things that matter</p>
+
+            <!-- Action buttons -->
+            <div class="button-container">
+                <!-- Essays Button -->
+                <a href="/essays/" class="btn btn-primary">
+                    Essays
+                </a>
+                
+                <!-- GitHub Button -->
+                <a href="https://github.com/LukeSchreiber" 
+                   target="_blank" 
+                   rel="noreferrer noopener"
+                   class="btn btn-secondary">
+                    GitHub
+                    <svg class="external-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                
+                <!-- Skills Button -->
+                <a href="/skills/" class="btn btn-secondary">
+                    Skills
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for Starfield Animation -->
+    <script>
+        class OptimizedStarfield {
+            constructor() {
+                this.canvas = document.getElementById('starfield-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                
+                // Performance settings
+                this.pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+                this.targetFrameTime = 14; // ~60fps minimum
+                this.lastFrameTime = 0;
+                
+                // Star configuration - 2 depth layers, ~160-220 total
+                this.layer1Count = 80; // Background layer
+                this.layer2Count = 110; // Foreground layer
+                this.totalStars = this.layer1Count + this.layer2Count;
+                
+                // Preallocated typed arrays (x, y, vx, vy, size, alpha, twinklePhase)
+                this.starData = new Float32Array(this.totalStars * 7);
+                
+                // Single pooled comet object
+                this.comet = {
+                    active: false,
+                    t: 0,
+                    duration: 0,
+                    p0: { x: 0, y: 0 },    // Start point
+                    p1: { x: 0, y: 0 },    // End point
+                    c: { x: 0, y: 0 },     // Control point for bezier curve
+                    trailBuffer: new Float32Array(24 * 2), // Ring buffer for trail positions (x,y pairs)
+                    trailIndex: 0,
+                    lastSpawn: 0
+                };
+                
+                // Resize handling with throttling
+                this.resizeTimeout = null;
+                this.width = 0;
+                this.height = 0;
+                
+                // Respect reduced motion preference
+                this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                
+                this.init();
+                
+                // Throttled resize handler
+                window.addEventListener('resize', () => {
+                    if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+                    this.resizeTimeout = setTimeout(() => this.handleResize(), 150);
+                });
+            }
+            
+            init() {
+                this.updateCanvasSize();
+                this.initStars();
+                
+                if (!this.prefersReducedMotion) {
+                    this.animate();
+                } else {
+                    this.renderStaticFrame();
+                }
+            }
+            
+            updateCanvasSize() {
+                const newWidth = window.innerWidth;
+                const newHeight = window.innerHeight;
+                
+                if (this.width !== newWidth || this.height !== newHeight) {
+                    this.width = newWidth;
+                    this.height = newHeight;
+                    
+                    this.canvas.width = this.width * this.pixelRatio;
+                    this.canvas.height = this.height * this.pixelRatio;
+                    this.canvas.style.width = this.width + 'px';
+                    this.canvas.style.height = this.height + 'px';
+                    
+                    this.ctx.scale(this.pixelRatio, this.pixelRatio);
+                    return true; // Dimensions changed
+                }
+                return false; // No change
+            }
+            
+            initStars() {
+                // Initialize stars across 2 layers with top-left concentration
+                for (let i = 0; i < this.totalStars; i++) {
+                    const isLayer1 = i < this.layer1Count;
+                    const baseIndex = i * 7;
+                    
+                    // Position with 30% concentration in top-left
+                    let x, y;
+                    if (Math.random() < 0.3) {
+                        x = Math.random() * (this.width * 0.4);
+                        y = Math.random() * (this.height * 0.4);
+                    } else {
+                        x = Math.random() * this.width;
+                        y = Math.random() * this.height;
+                    }
+                    
+                    this.starData[baseIndex] = x;     // x
+                    this.starData[baseIndex + 1] = y; // y
+                    this.starData[baseIndex + 2] = (Math.random() * 0.3 + 0.05) * (isLayer1 ? 0.6 : 1.0); // vx (layer speed)
+                    this.starData[baseIndex + 3] = (Math.random() * 0.3 + 0.05) * (isLayer1 ? 0.6 : 1.0); // vy
+                    this.starData[baseIndex + 4] = Math.random() * 1.5 + 0.3; // size
+                    this.starData[baseIndex + 5] = Math.random() * 0.4 + 0.2; // base alpha (0.2-0.6)
+                    this.starData[baseIndex + 6] = Math.random() * Math.PI * 2; // twinkle phase
+                }
+            }
+            
+            handleResize() {
+                const dimensionsChanged = this.updateCanvasSize();
+                
+                if (dimensionsChanged) {
+                    // Wrap star positions to new dimensions, don't recreate arrays
+                    for (let i = 0; i < this.totalStars; i++) {
+                        const baseIndex = i * 7;
+                        this.starData[baseIndex] = this.starData[baseIndex] % this.width;     // wrap x
+                        this.starData[baseIndex + 1] = this.starData[baseIndex + 1] % this.height; // wrap y
+                    }
+                }
+            }
+            
+            updateStars(dt, time) {
+                // Update star positions and twinkling
+                for (let i = 0; i < this.totalStars; i++) {
+                    const baseIndex = i * 7;
+                    const isLayer1 = i < this.layer1Count;
+                    
+                    // Move stars
+                    this.starData[baseIndex + 1] += this.starData[baseIndex + 3] * dt * 60; // y movement
+                    
+                    // Wrap around edges
+                    if (this.starData[baseIndex + 1] > this.height + 5) {
+                        this.starData[baseIndex + 1] = -5;
+                        // Maintain concentration on wrap
+                        if (Math.random() < 0.3) {
+                            this.starData[baseIndex] = Math.random() * (this.width * 0.4);
+                        } else {
+                            this.starData[baseIndex] = Math.random() * this.width;
+                        }
+                    }
+                    
+                    // Update twinkle phase and calculate alpha
+                    const twinkleSpeed = isLayer1 ? 0.6 : 1.0;
+                    this.starData[baseIndex + 6] += dt * twinkleSpeed;
+                    
+                    const baseAlpha = this.starData[baseIndex + 5];
+                    const twinklePhase = this.starData[baseIndex + 6];
+                    const twinkleAmp = 0.15;
+                    
+                    // Store computed alpha for rendering
+                    this.starData[baseIndex + 5] = Math.max(0.05, 
+                        Math.min(0.75, baseAlpha + Math.sin(twinklePhase) * twinkleAmp));
+                }
+            }
+            
+            updateComet(dt, time) {
+                // Spawn new comet every 8-12 seconds
+                if (!this.comet.active && time - this.comet.lastSpawn > (8000 + Math.random() * 4000)) {
+                    this.spawnComet();
+                    this.comet.lastSpawn = time;
+                }
+                
+                if (this.comet.active) {
+                    this.comet.t += dt / this.comet.duration;
+                    
+                    if (this.comet.t >= 1) {
+                        this.comet.active = false;
+                        return;
+                    }
+                    
+                    // Smooth easing: t*t*(3-2*t)
+                    const easedT = this.comet.t * this.comet.t * (3 - 2 * this.comet.t);
+                    
+                    // Quadratic bezier curve: B(t) = (1-t)²P0 + 2(1-t)tC + t²P1
+                    const invT = 1 - easedT;
+                    const invT2 = invT * invT;
+                    const t2 = easedT * easedT;
+                    const mixT = 2 * invT * easedT;
+                    
+                    const x = invT2 * this.comet.p0.x + mixT * this.comet.c.x + t2 * this.comet.p1.x;
+                    const y = invT2 * this.comet.p0.y + mixT * this.comet.c.y + t2 * this.comet.p1.y;
+                    
+                    // Update trail ring buffer
+                    const trailIdx = this.comet.trailIndex % 24;
+                    this.comet.trailBuffer[trailIdx * 2] = x;
+                    this.comet.trailBuffer[trailIdx * 2 + 1] = y;
+                    this.comet.trailIndex++;
+                }
+            }
+            
+            spawnComet() {
+                // Random edge spawn with arc across 60-80% of screen
+                const side = Math.floor(Math.random() * 4);
+                const coverage = 0.6 + Math.random() * 0.2; // 60-80%
+                
+                switch (side) {
+                    case 0: // Top
+                        this.comet.p0.x = Math.random() * this.width;
+                        this.comet.p0.y = -50;
+                        this.comet.p1.x = Math.random() * this.width;
+                        this.comet.p1.y = this.height * coverage;
+                        break;
+                    case 1: // Right
+                        this.comet.p0.x = this.width + 50;
+                        this.comet.p0.y = Math.random() * this.height;
+                        this.comet.p1.x = this.width * (1 - coverage);
+                        this.comet.p1.y = Math.random() * this.height;
+                        break;
+                    case 2: // Bottom
+                        this.comet.p0.x = Math.random() * this.width;
+                        this.comet.p0.y = this.height + 50;
+                        this.comet.p1.x = Math.random() * this.width;
+                        this.comet.p1.y = this.height * (1 - coverage);
+                        break;
+                    case 3: // Left
+                        this.comet.p0.x = -50;
+                        this.comet.p0.y = Math.random() * this.height;
+                        this.comet.p1.x = this.width * coverage;
+                        this.comet.p1.y = Math.random() * this.height;
+                        break;
+                }
+                
+                // Control point for gentle arc
+                this.comet.c.x = (this.comet.p0.x + this.comet.p1.x) / 2 + (Math.random() - 0.5) * 200;
+                this.comet.c.y = (this.comet.p0.y + this.comet.p1.y) / 2 + (Math.random() - 0.5) * 200;
+                
+                this.comet.active = true;
+                this.comet.t = 0;
+                this.comet.duration = 1.6 + Math.random() * 0.8; // 1.6-2.4s
+                this.comet.trailIndex = 0;
+                
+                // Clear trail buffer
+                this.comet.trailBuffer.fill(0);
+            }
+            
+            render() {
+                // Single clear - no global shadow effects
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                
+                // Draw stars - small 1-2px circles, no blur/shadow
+                this.ctx.fillStyle = '#e8e8e8';
+                for (let i = 0; i < this.totalStars; i++) {
+                    const baseIndex = i * 7;
+                    const x = this.starData[baseIndex];
+                    const y = this.starData[baseIndex + 1];
+                    const size = this.starData[baseIndex + 4];
+                    const alpha = this.starData[baseIndex + 5];
+                    
+                    this.ctx.globalAlpha = alpha;
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, Math.min(size, 2), 0, Math.PI * 2);
+                    this.ctx.fill();
+                }
+                
+                // Draw comet if active
+                if (this.comet.active) {
+                    this.renderComet();
+                }
+                
+                this.ctx.globalAlpha = 1;
+            }
+            
+            renderComet() {
+                const trailLength = Math.min(this.comet.trailIndex, 24);
+                if (trailLength < 2) return;
+                
+                // Comet opacity based on progress
+                const progress = this.comet.t;
+                let opacity;
+                if (progress < 0.2) {
+                    opacity = progress / 0.2;
+                } else if (progress > 0.7) {
+                    opacity = (1 - progress) / 0.3;
+                } else {
+                    opacity = 1;
+                }
+                
+                // Draw trail as a simple polyline with fading alpha
+                for (let i = 1; i < trailLength; i++) {
+                    const idx = (this.comet.trailIndex - i) % 24;
+                    const prevIdx = (this.comet.trailIndex - i + 1) % 24;
+                    
+                    const x1 = this.comet.trailBuffer[prevIdx * 2];
+                    const y1 = this.comet.trailBuffer[prevIdx * 2 + 1];
+                    const x2 = this.comet.trailBuffer[idx * 2];
+                    const y2 = this.comet.trailBuffer[idx * 2 + 1];
+                    
+                    const trailAlpha = opacity * (i / trailLength) * 0.6;
+                    
+                    this.ctx.globalAlpha = trailAlpha;
+                    this.ctx.strokeStyle = '#a8c8ff';
+                    this.ctx.lineWidth = 1.5 * (i / trailLength);
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x1, y1);
+                    this.ctx.lineTo(x2, y2);
+                    this.ctx.stroke();
+                }
+                
+                // Draw comet head
+                const headIdx = (this.comet.trailIndex - 1) % 24;
+                const headX = this.comet.trailBuffer[headIdx * 2];
+                const headY = this.comet.trailBuffer[headIdx * 2 + 1];
+                
+                this.ctx.globalAlpha = opacity;
+                this.ctx.fillStyle = '#ddeeff';
+                this.ctx.beginPath();
+                this.ctx.arc(headX, headY, 2, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+            
+            renderStaticFrame() {
+                // Show static stars for reduced motion
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                this.ctx.fillStyle = '#e8e8e8';
+                this.ctx.globalAlpha = 0.5;
+                
+                for (let i = 0; i < this.totalStars; i++) {
+                    const baseIndex = i * 7;
+                    const x = this.starData[baseIndex];
+                    const y = this.starData[baseIndex + 1];
+                    const size = this.starData[baseIndex + 4];
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, Math.min(size, 2), 0, Math.PI * 2);
+                    this.ctx.fill();
+                }
+                
+                this.ctx.globalAlpha = 1;
+            }
+            
+            animate() {
+                const currentTime = performance.now();
+                const dt = (currentTime - this.lastFrameTime) / 1000;
+                
+                // Cap frame rate to ~60fps (skip if dt < 14ms)
+                if (dt < this.targetFrameTime / 1000) {
+                    requestAnimationFrame(() => this.animate());
+                    return;
+                }
+                
+                this.lastFrameTime = currentTime;
+                
+                // Update simulation
+                this.updateStars(dt, currentTime);
+                this.updateComet(dt, currentTime);
+                
+                // Render frame
+                this.render();
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize optimized starfield when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new OptimizedStarfield();
+        });
+    </script>
+</body>
+</html>
