@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7SELECT PURE WATER - Premium Hydration Collection</title>
+    <meta name="description" content="Discover 7SELECT's premium PURE WATER collection. Purified water with minerals added for taste. Pure refreshment in every drop.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 2rem 0 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            background: #fafafa;
+        }
+
+        .search-box:focus {
+            border-color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .search-btn:hover {
+            color: #1a1a1a;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .cart-icon:hover {
+            color: #ff9900;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #ffffff;
+            padding: 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+            margin: 0;
+            padding: 1.5rem 0;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #666;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #1a1a1a;
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #ffffff;
+            color: #1a1a1a;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            position: relative;
+        }
+
+        .hero-image {
+            background: url('https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .product-hero-bottle {
+            position: relative;
+            z-index: 2;
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 4rem 4rem 6rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 450px;
+            margin: 0 0 3rem 0;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Filters */
+        .filters {
+            background: transparent;
+            padding: 0 0 3rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .filters h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            background: #fafafa;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            background: white;
+        }
+
+        /* Product Grid */
+        .products-section h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 4rem;
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .product-card {
+            background: white;
+            border: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-card.featured {
+            border: none;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #1a1a1a;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 2rem;
+        }
+
+        .product-info {
+            padding: 0;
+            text-align: center;
+        }
+
+        .product-brand {
+            color: #999;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stars {
+            color: #1a1a1a;
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .product-sizes {
+            margin-bottom: 2rem;
+        }
+
+        .size-select {
+            width: 100%;
+            max-width: 200px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            background: #fafafa;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .size-select:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            background: white;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            max-width: 250px;
+            background: #f4d03f;
+            color: #1a1a1a;
+            border: 1px solid #f4d03f;
+            padding: 1rem 2rem;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #f1c40f;
+            border-color: #f1c40f;
+            transform: translateY(-1px);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: #f0f0f0;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-total {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .checkout-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                order: 3;
+                width: 100%;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: 60vh;
+            }
+
+            .hero-image {
+                order: 1;
+                min-height: 40vh;
+            }
+
+            .hero-content {
+                order: 2;
+                padding: 3rem 2rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top-color: #ff9900;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">7SELECT</a>
+            
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search our collection..." id="searchInput">
+                <button class="search-btn" onclick="searchProducts()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div style="position: absolute; top: 2rem; right: 2rem;">
+                <div class="cart-icon" onclick="toggleCart()" style="color: #1a1a1a; cursor: pointer;">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#" class="active">All Water</a></li>
+                <li><a href="#" onclick="filterByCategory('pure')">Pure</a></li>
+                <li><a href="#" onclick="filterByCategory('sparkling')">Sparkling</a></li>
+                <li><a href="#" onclick="filterByCategory('enhanced')">Enhanced</a></li>
+                <li><a href="#" onclick="filterByCategory('alkaline')">Alkaline</a></li>
+                <li><a href="#" onclick="filterByCategory('flavored')">Flavored</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1571167582279-8c12c60b7e7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="7SELECT Pure Water Bottle" class="product-hero-bottle">
+        </div>
+        <div class="hero-content">
+            <h1>Pure Water</h1>
+            <p>Exceptional quality, uncompromising purity. Discover our premium collection of purified water, crafted for those who appreciate the finest things in life.</p>
+            <button class="cta-button" onclick="scrollToProducts()">Shop Collection</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Filters -->
+        <section class="filters">
+            <h3>Refine Selection</h3>
+            <div class="filter-group">
+                <select class="filter-select" id="sizeFilter" onchange="applyFilters()">
+                    <option value="">All Sizes</option>
+                    <option value="16.9 FL OZ">16.9 FL OZ</option>
+                    <option value="25 FL OZ">25 FL OZ</option>
+                    <option value="1L">1 Liter</option>
+                    <option value="1.5L">1.5 Liter</option>
+                </select>
+                
+                <select class="filter-select" id="priceFilter" onchange="applyFilters()">
+                    <option value="">All Prices</option>
+                    <option value="0-2">Under $2</option>
+                    <option value="2-3">$2 - $3</option>
+                    <option value="3-5">$3 - $5</option>
+                    <option value="5+">Over $5</option>
+                </select>
+                
+                <select class="filter-select" id="sortFilter" onchange="applyFilters()">
+                    <option value="">Sort By</option>
+                    <option value="name">Name A-Z</option>
+                    <option value="price-low">Price Low to High</option>
+                    <option value="price-high">Price High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <h2>Collection</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="cartItems">
+            <!-- Cart items will be dynamically loaded here -->
+        </div>
+        
+        <div class="cart-total">
+            <div class="total-amount">Total: $<span id="cartTotal">0.00</span></div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        Product added to cart successfully!
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "PURE WATER",
+                brand: "7SELECT",
+                price: 1.99,
+                category: "pure",
+                sizes: ["25 FL OZ", "16.9 FL OZ", "1L", "1.5L"],
+                rating: 4.9,
+                reviews: 1247,
+                image: "https://images.unsplash.com/photo-1571167582279-8c12c60b7e7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                description: "Purified water with minerals added for taste - perfect for your lifestyle",
+                featured: true,
+                badge: "BESTSELLER"
+            },
+            {
+                id: 2,
+                name: "PURE WATER Multi-Pack",
+                brand: "7SELECT",
+                price: 4.99,
+                category: "pure", 
+                sizes: ["12-Pack", "24-Pack", "32-Pack"],
+                rating: 4.8,
+                reviews: 892,
+                image: "💧",
+                description: "Bulk pack of our signature pure water"
+            },
+            {
+                id: 3,
+                name: "Sparkling Pure",
+                brand: "7SELECT",
+                price: 2.49,
+                category: "sparkling",
+                sizes: ["25 FL OZ", "16.9 FL OZ"],
+                rating: 4.7,
+                reviews: 634,
+                image: "✨",
+                description: "Crisp sparkling water with natural bubbles"
+            },
+            {
+                id: 4,
+                name: "Enhanced Electrolyte",
+                brand: "7SELECT",
+                price: 2.99,
+                category: "enhanced",
+                sizes: ["25 FL OZ", "32 FL OZ"],
+                rating: 4.8,
+                reviews: 445,
+                image: "⚡",
+                description: "Enhanced with essential electrolytes"
+            },
+            {
+                id: 5,
+                name: "Alkaline Plus",
+                brand: "7SELECT",
+                price: 3.49,
+                category: "alkaline",
+                sizes: ["25 FL OZ", "1L"],
+                rating: 4.6,
+                reviews: 267,
+                image: "🔋",
+                description: "pH balanced alkaline water for optimal hydration"
+            },
+            {
+                id: 6,
+                name: "Lemon Infused",
+                brand: "7SELECT",
+                price: 2.79,
+                category: "flavored",
+                sizes: ["25 FL OZ", "16.9 FL OZ"],
+                rating: 4.5,
+                reviews: 358,
+                image: "🍋",
+                description: "Natural lemon flavor with pure water base"
+            },
+            {
+                id: 7,
+                name: "Berry Fusion",
+                brand: "7SELECT",
+                price: 2.79,
+                category: "flavored",
+                sizes: ["25 FL OZ", "16.9 FL OZ"],
+                rating: 4.7,
+                reviews: 423,
+                image: "🫐",
+                description: "Mixed berry essence in purified water"
+            },
+            {
+                id: 8,
+                name: "Sparkling Lime",
+                brand: "7SELECT",
+                price: 2.69,
+                category: "sparkling",
+                sizes: ["25 FL OZ", "16.9 FL OZ"],
+                rating: 4.6,
+                reviews: 312,
+                image: "🍃",
+                description: "Refreshing lime sparkling water"
+            },
+            {
+                id: 9,
+                name: "Premium Glass Bottle",
+                brand: "7SELECT",
+                price: 4.99,
+                category: "pure",
+                sizes: ["750ml Glass", "1L Glass"],
+                rating: 4.9,
+                reviews: 156,
+                image: "🍾",
+                description: "Premium pure water in eco-friendly glass",
+                badge: "ECO-FRIENDLY"
+            }
+        ];
+
+        // Cart functionality
+        let cart = [];
+        let filteredProducts = [...products];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts(products);
+            updateCartDisplay();
+        });
+
+        // Display products
+        function displayProducts(productList) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            productList.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                if (product.featured) {
+                    productCard.classList.add('featured');
+                }
+                
+                const badgeHtml = product.badge ? `<div class="product-badge">${product.badge}</div>` : '';
+                
+                // Check if image is a URL or emoji
+                const imageHtml = product.image.startsWith('http') 
+                    ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`
+                    : product.image;
+                
+                productCard.innerHTML = `
+                    ${badgeHtml}
+                    <div class="product-image">${imageHtml}</div>
+                    <div class="product-info">
+                        <div class="product-brand">${product.brand}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-description">${product.description || ''}</div>
+                        <div class="product-price">$${product.price}</div>
+                        <div class="product-rating">
+                            <div class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}</div>
+                            <div class="rating-count">(${product.reviews} reviews)</div>
+                        </div>
+                        <div class="product-sizes">
+                            <select class="size-select" id="size-${product.id}">
+                                ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                            </select>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartDisplay();
+            showSuccessMessage();
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Update cart items
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">${item.image}</div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            // Update total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+                updateCartDisplay();
+            }
+        }
+
+        // Toggle cart
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        // Filter by category
+        function filterByCategory(category) {
+            filteredProducts = products.filter(product => product.category === category);
+            displayProducts(filteredProducts);
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            let filtered = [...products];
+            
+            const sizeFilter = document.getElementById('sizeFilter').value;
+            const priceFilter = document.getElementById('priceFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+
+            // Size filter
+            if (sizeFilter) {
+                filtered = filtered.filter(product => 
+                    product.sizes.includes(parseInt(sizeFilter))
+                );
+            }
+
+            // Price filter
+            if (priceFilter) {
+                const [min, max] = priceFilter.split('-').map(p => p.replace('+', ''));
+                filtered = filtered.filter(product => {
+                    if (max) {
+                        return product.price >= parseInt(min) && product.price <= parseInt(max);
+                    } else {
+                        return product.price >= parseInt(min);
+                    }
+                });
+            }
+
+            // Sort
+            if (sortFilter) {
+                switch(sortFilter) {
+                    case 'name':
+                        filtered.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'price-low':
+                        filtered.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-high':
+                        filtered.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'rating':
+                        filtered.sort((a, b) => b.rating - a.rating);
+                        break;
+                }
+            }
+
+            filteredProducts = filtered;
+            displayProducts(filtered);
+        }
+
+        // Search products
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(product => 
+                product.name.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query) ||
+                product.description.toLowerCase().includes(query) ||
+                product.brand.toLowerCase().includes(query)
+            );
+            displayProducts(filtered);
+        }
+
+        // Scroll to products
+        function scrollToProducts() {
+            document.querySelector('.products-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const message = document.getElementById('successMessage');
+            message.classList.add('show');
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            alert('Thank you for your purchase! Your Double Date shoes will be shipped soon.');
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchProducts();
+            }
+        });
+    </script>
+</body>
+</html>
