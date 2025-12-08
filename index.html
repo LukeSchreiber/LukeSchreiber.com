@@ -3,275 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke Schreiber · AI Visionary</title>
-    <meta name="description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
-    <meta name="keywords" content="AI Visionary, Full Stack Developer, Web Development, AI Projects, React, Node.js">
-    <meta name="author" content="Luke Schreiber">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lukeschreiber.github.io/">
-    <meta property="og:title" content="Luke Schreiber · AI Visionary">
-    <meta property="og:description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
-    <meta property="og:image" content="https://lukeschreiber.github.io/hero.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://lukeschreiber.github.io/">
-    <meta property="twitter:title" content="Luke Schreiber · AI Visionary">
-    <meta property="twitter:description" content="Luke Schreiber — AI Visionary, builder, writer, AI enthusiast.">
-    <meta property="twitter:image" content="https://lukeschreiber.github.io/hero.jpg">
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    
+    <title>Luke Schreiber</title>
     <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #000000;
-            color: #c9c9c9;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Canvas Background */
-        #starfield-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Minimal Overlay */
-        .nebula-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 50% 50%, rgba(40, 40, 40, 0.1) 0%, transparent 70%);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* Main Content */
-        .main-content {
-            position: relative;
-            z-index: 10;
+            background-color: #000000;
+            color: #808080;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            padding: 2rem;
-        }
-
-        .content-container {
-            text-align: center;
-            max-width: 800px;
-        }
-
-
-
-        /* Typography */
-        .main-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            margin: 0 0 1.5rem 0;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .name-link {
-            color: #e8e8e8;
-            text-decoration: none;
-            text-shadow: 
-                0 0 8px rgba(0, 0, 0, 0.8),
-                0 0 20px rgba(150, 150, 150, 0.1);
-            opacity: 0.95;
-            transition: opacity 0.2s ease;
-        }
-
-        .name-link:hover {
-            opacity: 1.0;
-        }
-
-        .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            font-weight: 400;
-            color: #a8a8a8;
-            margin: 0 0 3.5rem 0;
-            text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
-            letter-spacing: 0.01em;
-        }
-
-        /* Buttons */
-        .button-container {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
             margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.75rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 0.25rem;
-            transition: all 0.2s ease;
-            position: relative;
-            min-width: 110px;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: #1a1a1a;
-            color: #c9c9c9;
-            border-color: #2a2a2a;
-        }
-
-        .btn-secondary {
-            background: #171717;
-            color: #b8b8b8;
-            border-color: #252525;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .btn-primary:hover {
-            background: #2a2a2a;
-            color: #00d4d4;
-            border-color: #00d4d4;
-            box-shadow: 0 0 15px rgba(0, 212, 212, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: #222222;
-            color: #ffffff;
-            border-color: #404040;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-
-        /* External link icon */
-        .external-icon {
-            width: 0.8rem;
-            height: 0.8rem;
-            margin-left: 0.5rem;
-            opacity: 0.6;
-            transition: opacity 0.2s ease;
-        }
-
-        .btn:hover .external-icon {
-            opacity: 1;
-        }
-
-
-
-        /* Mobile Responsive */
-        @media (max-width: 640px) {
-            .main-content {
-                padding: 1rem;
-            }
-
-
-
-            .button-container {
-                flex-direction: column;
-                gap: 0.75rem;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 260px;
-                padding: 0.875rem 2rem;
-            }
-
-            .main-title {
-                margin: 0 0 1.25rem 0;
-            }
-
-            .subtitle {
-                margin: 0 0 2.75rem 0;
-            }
-        }
-
-        /* Performance optimizations */
-        .btn {
-            will-change: transform;
+        h1 {
+            font-weight: 400;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <!-- Canvas Background -->
-    <canvas id="starfield-canvas"></canvas>
-    
-    <!-- Nebula Gradient Overlay -->
-    <div class="nebula-overlay"></div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-container">
-            <!-- Name -->
-            <h1 class="main-title">
-                <a href="https://x.com/LukeOlympus" target="_blank" rel="noopener noreferrer" class="name-link">Luke Schreiber</a>
-            </h1>
-            
-            <!-- Subtitle -->
-            <p class="subtitle">Engineering things that matter</p>
-
-            <!-- Action buttons -->
-            <div class="button-container">
-                <!-- Manifestos Button -->
-                <a href="/manifestos/" class="btn btn-primary">
-                    Manifestos
-                </a>
-                
-                <!-- GitHub Button -->
-                <a href="https://github.com/LukeSchreiber" 
-                   target="_blank" 
-                   rel="noreferrer noopener"
-                   class="btn btn-secondary">
-                    GitHub
-                    <svg class="external-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd" />
-                        <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-                
-                <!-- Skills Button -->
-                <a href="/skills/" class="btn btn-secondary">
-                    Skills
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- JavaScript for Starfield Animation -->
-    <script src="starfield.js"></script>
+    <h1>Building portfolio soon</h1>
 </body>
 </html>
