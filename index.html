@@ -5,27 +5,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Schreiber</title>
     <style>
-        body {
-            background-color: #000000;
-            color: #808080;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            box-sizing: border-box;
         }
-        h1 {
+
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
             font-weight: 400;
-            font-size: 1.5rem;
-            letter-spacing: 0.05em;
-            opacity: 0.8;
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: opacity 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        main {
+            margin-bottom: 100px;
+        }
+
+        main p {
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        main a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-color);
+            transition: opacity 0.2s ease;
+        }
+
+        main a:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+        }
+
+        .contact {
+            margin-top: 60px;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--text-color);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            header {
+                margin-bottom: 60px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            main p {
+                font-size: 1rem;
+                margin-bottom: 32px;
+            }
+
+            footer {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Building portfolio soon</h1>
+    <div class="container">
+        <header>
+            <div class="logo">Luke Schreiber</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#essays">Essays</a>
+                <a href="#restaurants">Restaurants</a>
+                <a href="https://linkedin.com" target="_blank">IN</a>
+                <a href="https://twitter.com" target="_blank">X</a>
+                <a href="https://instagram.com" target="_blank">IG</a>
+                <button class="theme-toggle" id="themeToggle">☾</button>
+            </nav>
+        </header>
+
+        <main>
+            <p>
+                I build technology, invest, and tell stories.
+            </p>
+
+            <p>
+                Originally from the Midwest, I grew up fascinated by how things work and driven by a desire to create meaningful solutions. This curiosity led me to explore the intersection of technology, business, and human experience.
+            </p>
+
+            <p>
+                My career began in software engineering, where I developed systems that scaled to millions of users. Over time, I transitioned into product leadership, guiding teams to build products that solve real problems. Along the way, I discovered a passion for early-stage investing and helping founders navigate the challenging journey of building companies.
+            </p>
+
+            <p>
+                Currently, I'm working on projects at the intersection of artificial intelligence and human creativity, exploring how technology can augment rather than replace human potential. I'm particularly interested in tools that help people think more clearly and work more effectively.
+            </p>
+
+            <p>
+                Previously, I've worked with companies like <a href="https://example.com">TechCorp</a>, <a href="https://example.com">InnovateAI</a>, and <a href="https://example.com">StartupStudio</a>, where I led product development and growth initiatives.
+            </p>
+
+            <p>
+                My personal goal is to build things that matter and last, while helping others do the same.
+            </p>
+
+            <p>
+                I believe in the power of simplicity, the importance of clear thinking, and the value of building in public. My mission is to create technology that serves humanity, invest in founders who share this vision, and write about what I learn along the way.
+            </p>
+
+            <div class="contact">
+                <a href="mailto:hello@lukeschreiber.com">hello@lukeschreiber.com</a>
+            </div>
+        </main>
+
+        <footer>
+            <div>&copy; 2026 Luke Schreiber</div>
+            <div id="location-time">San Francisco, CA</div>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
+        });
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            document.getElementById('location-time').textContent = `San Francisco, CA · ${timeString}`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 60000); // Update every minute
+    </script>
 </body>
 </html>
