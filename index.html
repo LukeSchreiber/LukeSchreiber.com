@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,15 @@
         :root {
             --bg-color: #000000;
             --text-color: #ffffff;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --muted-color: rgba(255, 255, 255, 0.5);
         }
 
         [data-theme="light"] {
             --bg-color: #ffffff;
             --text-color: #000000;
+            --border-color: rgba(0, 0, 0, 0.12);
+            --muted-color: rgba(0, 0, 0, 0.5);
         }
 
         body {
@@ -106,6 +111,73 @@
             opacity: 0.7;
         }
 
+        /* Featured Project */
+        .featured-project {
+            margin: 60px 0;
+            padding: 32px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .featured-project h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .featured-project .subtitle {
+            font-size: 1.05rem;
+            color: var(--muted-color);
+            margin-bottom: 32px;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 0.9rem;
+            color: var(--muted-color);
+        }
+
+        .video-placeholder video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .tech-group h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted-color);
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .tech-group p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .local-first {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            font-style: italic;
+        }
+
         .contact {
             margin-top: 60px;
             font-size: 1.05rem;
@@ -117,7 +189,7 @@
             justify-content: space-between;
             align-items: center;
             padding-top: 40px;
-            border-top: 1px solid var(--text-color);
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             opacity: 0.7;
             flex-wrap: wrap;
@@ -147,6 +219,15 @@
                 margin-bottom: 32px;
             }
 
+            .featured-project h2 {
+                font-size: 1.3rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
             footer {
                 font-size: 0.85rem;
             }
@@ -158,6 +239,11 @@
                 justify-content: flex-start;
             }
 
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             footer {
                 flex-direction: column;
                 align-items: flex-start;
@@ -166,6 +252,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -180,19 +267,55 @@
 
         <main>
             <p>
-                I'm a 19-year-old from Cleveland, Ohio, building technology and running an agency for local businesses.
+                I'm a 19-year-old Electrical Engineering student at LCCC, transferring to Ohio State in Fall 2026. I
+                build at the intersection of hardware, embedded systems, and human performance.
             </p>
 
             <p>
-                Currently studying at community college and transferring to Ohio State in Fall 2026 for Electrical and Computer Engineering. I'm focused on the fundamentals while building real things in the present.
+                Focused on the fundamentals while shipping real things in the present — full-stack systems that connect
+                sensors to screens.
+            </p>
+
+            <div class="featured-project">
+                <h2>Velo Lift — Full-Stack Barbell Velocity Tracker</h2>
+                <p class="subtitle">Measure bar speed in real time. Train smarter.</p>
+
+                <div class="video-embed">
+                    <blockquote class="twitter-tweet" data-theme="dark"><a
+                            href="https://x.com/SuperLuke/status/2019625177538056630"></a></blockquote>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-group">
+                        <h3>Hardware</h3>
+                        <p>Arduino Uno, 600P/R Rotary Encoder, C++</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Frontend</h3>
+                        <p>React 19, Vite 7, Tailwind 4</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Backend</h3>
+                        <p>FastAPI, Python, pyserial</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Mechanical</h3>
+                        <p>OpenSCAD, 3D Printing</p>
+                    </div>
+                </div>
+
+                <p class="local-first">Local-first — all data stays on your machine via Dexie/IndexedDB. No accounts, no
+                    cloud, no tracking.</p>
+            </div>
+
+            <p>
+                AI and machine learning are core to how I think about building — using models as components in real
+                systems, not abstractions. I'm drawn to problems where software meets the physical world.
             </p>
 
             <p>
-                I run <a href="https://pnlsystems.com" target="_blank">PNL Systems</a>, where I help local businesses leverage technology to grow. The work is practical and the problems are real.
-            </p>
-
-            <p>
-                AI and machine learning fascinate me—not just the technology itself, but what it enables us to build. I'm equally interested in Bitcoin and crypto, exploring how decentralized systems can reshape value and coordination.
+                Equally interested in Bitcoin and how decentralized protocols create coordination without trust. Sound
+                money, open networks, verifiable systems.
             </p>
 
             <p>
@@ -200,7 +323,8 @@
             </p>
 
             <div class="contact">
-                <a href="mailto:LukeSchreiber32@gmail.com">LukeSchreiber32@gmail.com</a> · <a href="https://twitter.com/SuperLuke" target="_blank">@SuperLuke</a>
+                <a href="mailto:LukeSchreiber32@gmail.com">LukeSchreiber32@gmail.com</a> · <a
+                    href="https://twitter.com/SuperLuke" target="_blank">@SuperLuke</a>
             </div>
         </main>
 
@@ -211,12 +335,11 @@
     </div>
 
     <script>
-        // Theme toggle
+        // Theme toggle — default to dark
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
 
-        // Check for saved theme preference or default to light
-        const currentTheme = localStorage.getItem('theme') || 'light';
+        const currentTheme = localStorage.getItem('theme') || 'dark';
         html.setAttribute('data-theme', currentTheme);
         themeToggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
 
@@ -239,7 +362,9 @@
         }
 
         updateTime();
-        setInterval(updateTime, 60000); // Update every minute
+        setInterval(updateTime, 60000);
     </script>
+    <script async src="https://platform.twitter.com/widgets.js"></script>
 </body>
+
 </html>
