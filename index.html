@@ -178,6 +178,21 @@
             font-style: italic;
         }
 
+        .featured-project + .featured-project {
+            border-top: none;
+        }
+
+        .status-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted-color);
+            border: 1px solid var(--border-color);
+            padding: 2px 8px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
         .contact {
             margin-top: 60px;
             font-size: 1.05rem;
@@ -277,7 +292,7 @@
 
                 <div class="video-embed">
                     <blockquote class="twitter-tweet" data-theme="dark"><a
-                            href="https://x.com/SuperLuke/status/2019625177538056630"></a></blockquote>
+                            href="https://x.com/SuperLuke/status/2019837782789923086"></a></blockquote>
                 </div>
 
                 <div class="tech-grid">
@@ -300,6 +315,30 @@
                 </div>
 
                 <p class="local-first">All data stays local. No accounts, no cloud.</p>
+            </div>
+
+            <div class="featured-project">
+                <h2>TinyML Sentinel <span class="status-tag">In Progress</span></h2>
+                <p class="subtitle">Handheld computer vision platform for autonomous, bare-metal edge inference.</p>
+
+                <div class="tech-grid">
+                    <div class="tech-group">
+                        <h3>Hardware</h3>
+                        <p>ESP32-S3, OLED Display, 1050mAh LiPo, ElectroCookie PCB</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Firmware</h3>
+                        <p>Bare-metal C++, ESP-NN (AI Vector Instructions), Custom Dot Product math</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Intelligence</h3>
+                        <p>PyTorch, CNN Training, weights.h header export</p>
+                    </div>
+                    <div class="tech-group">
+                        <h3>Mechanical</h3>
+                        <p>Bambu P1S, Matte Black Enclosure, Belt-clip design</p>
+                    </div>
+                </div>
             </div>
 
             <p>
