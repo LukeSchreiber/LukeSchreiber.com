@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books — Luke Schreiber</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --muted-color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: rgba(0, 0, 0, 0.12);
+            --muted-color: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .logo a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo a:hover {
+            opacity: 0.7;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: opacity 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.7;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Book List */
+        .book-list {
+            list-style: none;
+            counter-reset: books;
+        }
+
+        .book-list li {
+            counter-increment: books;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+        }
+
+        .book-list li:first-child {
+            padding-top: 0;
+        }
+
+        .book-list li::before {
+            content: counter(books, decimal-leading-zero);
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            min-width: 24px;
+        }
+
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .book-title {
+            font-size: 1.05rem;
+            font-style: italic;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+        }
+
+        .book-note {
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            margin-top: 80px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            header {
+                margin-bottom: 60px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            footer {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="/">Luke Schreiber</a></div>
+            <nav>
+                <a href="/books">Books</a>
+                <a href="https://github.com/LukeSchreiber" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank">IN</a>
+                <a href="https://x.com/LukeSchreiberX" target="_blank">X</a>
+                <button class="theme-toggle" id="themeToggle">☾</button>
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="page-title">Books</h1>
+
+            <ol class="book-list">
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Stranger</span>
+                        <span class="book-author">Albert Camus</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Meditations</span>
+                        <span class="book-author">Marcus Aurelius</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Civilization and Its Discontents</span>
+                        <span class="book-author">Sigmund Freud</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Crime and Punishment</span>
+                        <span class="book-author">Fyodor Dostoevsky</span>
+                        <span class="book-note">Pevear & Volokhonsky translation</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Brothers Karamazov</span>
+                        <span class="book-author">Fyodor Dostoevsky</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Big Print</span>
+                        <span class="book-author">Lawrence Lepard</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Fiat Food</span>
+                        <span class="book-author">Matthew Lysiak</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Book of Elon</span>
+                        <span class="book-author">Eric Jorgenson</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Millionaire Fastlane</span>
+                        <span class="book-author">MJ DeMarco</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Benjamin Franklin</span>
+                        <span class="book-author">Walter Isaacson</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Broken Money</span>
+                        <span class="book-author">Lyn Alden</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Bitcoin Standard</span>
+                        <span class="book-author">Saifedean Ammous</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Elon Musk</span>
+                        <span class="book-author">Walter Isaacson</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Steve Jobs</span>
+                        <span class="book-author">Walter Isaacson</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Count of Monte Cristo</span>
+                        <span class="book-author">Alexandre Dumas</span>
+                        <span class="book-note">Penguin Classics</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">The Myth of Sisyphus</span>
+                        <span class="book-author">Albert Camus</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-info">
+                        <span class="book-title">Beyond Good and Evil</span>
+                        <span class="book-author">Friedrich Nietzsche</span>
+                        <span class="book-note">Penguin Classics</span>
+                    </div>
+                </li>
+            </ol>
+        </main>
+
+        <footer>
+            <div>&copy; 2026 Luke Schreiber</div>
+            <div id="location-time">Cleveland, OH</div>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle - sync with main site
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
+        });
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            document.getElementById('location-time').textContent = `Cleveland, OH · ${timeString}`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+
+</html>
