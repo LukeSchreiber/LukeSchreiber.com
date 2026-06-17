@@ -195,6 +195,31 @@
             vertical-align: middle;
         }
 
+        .work-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .work-list li {
+            position: relative;
+            padding-left: 20px;
+            padding-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .work-list li:last-child {
+            padding-bottom: 0;
+        }
+
+        .work-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--muted-color);
+        }
+
         .contact {
             margin-top: 60px;
             font-size: 1.05rem;
@@ -292,22 +317,11 @@
                 <h2>Summer 2026</h2>
                 <p class="subtitle">Electrical Engineering Intern · NASA · Electric Propulsion · Summer 2026</p>
 
-                <div class="tech-grid" style="margin-bottom: 24px;">
-                    <div class="tech-group">
-                        <h3>Division</h3>
-                        <p>Testing Division, Electric Propulsion Lab</p>
-                    </div>
-                    <div class="tech-group">
-                        <h3>Facilities</h3>
-                        <p>Vacuum Chambers, Xenon Recovery Systems</p>
-                    </div>
-                </div>
-
-                <p style="margin-bottom: 16px; font-size: 0.95rem;">Designing point-to-point electrical control schematics and PLC logic for high-vacuum testing chambers.</p>
-
-                <p style="margin-bottom: 16px; font-size: 0.95rem;">Modernizing automation systems for the Xenon Recovery Cart using AutoCAD Electrical.</p>
-
-                <p style="margin-bottom: 0; font-size: 0.95rem;">Analyzing legacy vacuum tech and fluid control logic to optimize gas reclamation systems.</p>
+                <ul class="work-list">
+                    <li>Designing point-to-point electrical control schematics and PLC logic for high-vacuum testing chambers</li>
+                    <li>Modernizing automation systems for the Xenon Recovery Cart using AutoCAD Electrical</li>
+                    <li>Analyzing legacy vacuum tech and fluid control logic to optimize gas reclamation systems</li>
+                </ul>
             </div>
 
             <div class="featured-project">
