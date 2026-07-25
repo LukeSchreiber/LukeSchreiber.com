@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --muted-color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: rgba(0, 0, 0, 0.12);
+    --muted-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.logo a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.logo a:hover {
+    opacity: 0.7;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+    opacity: 0.7;
+}
+
+/* Main Content */
+main {
+    margin-bottom: 100px;
+}
+
+main p {
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+}
+
+main a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-color);
+    transition: opacity 0.2s ease;
+}
+
+main a:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+/* Featured Project */
+.featured-project {
+    margin: 60px 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.featured-project h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.featured-project .subtitle {
+    font-size: 1.05rem;
+    color: var(--muted-color);
+    margin-bottom: 32px;
+}
+
+.featured-project + .featured-project {
+    border-top: none;
+}
+
+.project-link {
+    margin-top: 16px;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.tech-group h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-color);
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.tech-group p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.local-first {
+    font-size: 0.95rem;
+    color: var(--muted-color);
+    font-style: italic;
+}
+
+.status-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted-color);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+.work-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.work-list li {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.work-list li:last-child {
+    padding-bottom: 0;
+}
+
+.work-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted-color);
+}
+
+.contact {
+    margin-top: 60px;
+    font-size: 1.05rem;
+}
+
+/* Books page — Page Title */
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.title-tag {
+    font-size: 0.65em;
+    color: var(--muted-color);
+    margin-left: 12px;
+}
+
+/* Books page — Book List */
+.book-list {
+    list-style: none;
+    counter-reset: books;
+}
+
+.book-list li {
+    counter-increment: books;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+}
+
+.book-list li:first-child {
+    padding-top: 0;
+}
+
+.book-list li::before {
+    content: counter(books, decimal-leading-zero);
+    font-size: 0.8rem;
+    color: var(--muted-color);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    min-width: 24px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.book-title {
+    font-size: 1.05rem;
+    font-style: italic;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+}
+
+.book-note {
+    font-size: 0.8rem;
+    color: var(--muted-color);
+    opacity: 0.7;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Books footer needs extra top spacing (no preceding border block) */
+.footer-spaced {
+    margin-top: 80px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 24px;
+    }
+
+    header {
+        margin-bottom: 60px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    main p {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .featured-project h2 {
+        font-size: 1.3rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    footer {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
