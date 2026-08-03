@@ -164,7 +164,7 @@ main a:hover {
     line-height: 1.6;
 }
 
-.local-first {
+.project-note {
     font-size: 0.95rem;
     color: var(--muted-color);
     font-style: italic;
