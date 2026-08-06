@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Schreiber</title>
-    <meta name="description" content="Luke Schreiber — undergrad at Ohio State and electrical engineering intern at NASA's electric propulsion lab. Projects, reading, and contact.">
+    <meta name="description" content="Luke Schreiber — electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn. Digital design, embedded systems, and instrumentation.">
     <link rel="canonical" href="https://lukeschreiber.com/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lukeschreiber.com/">
     <meta property="og:title" content="Luke Schreiber">
-    <meta property="og:description" content="Undergrad at Ohio State, electrical engineering intern at NASA's electric propulsion lab. Projects, reading, and contact.">
+    <meta property="og:description" content="Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn. Digital design, embedded systems, and instrumentation.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@LukeSchreiberX">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -32,77 +32,223 @@
         </header>
 
         <main>
-            <p>
-                Currently an undergrad at Ohio State. Interning at NASA's electric propulsion lab.
+            <p class="intro">
+                Electrical and computer engineering student at Ohio State. Electrical test engineer intern at NASA
+                Glenn. I build things that span the stack — RTL and formal verification, embedded firmware, PCBs,
+                and the test instrumentation around them.
             </p>
 
-            <div class="featured-project">
-                <h2>NASA — Electric Propulsion</h2>
-                <p class="subtitle">Electrical Engineering Intern · Summer 2026</p>
+            <section>
+                <h2 class="section-title">Experience</h2>
 
-                <ul class="work-list">
-                    <li>Designing point-to-point electrical control schematics and PLC logic for high-vacuum testing chambers</li>
-                    <li>Modernizing automation systems for the Xenon Recovery Cart using AutoCAD Electrical</li>
-                    <li>Analyzing legacy vacuum tech and fluid control logic to optimize gas reclamation systems</li>
-                </ul>
-            </div>
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3>Electrical Test Engineer Intern</h3>
+                        <span class="entry-date">June 2026 – Aug. 2026</span>
+                    </div>
+                    <div class="entry-sub">
+                        <span>HX5 LLC — NASA Glenn Research Center, Space Environments Test Branch</span>
+                        <span class="entry-place">Cleveland, OH</span>
+                    </div>
+                    <ul class="work-list">
+                        <li>Authored Arduino/C++ firmware for a model rocket static test stand — load-cell thrust
+                            measurement, SD-card data logging, and relay-based ignition interlocks — and wired the full
+                            electrical system</li>
+                        <li>Supported instrumentation, controls, and data systems for vacuum chamber test facilities,
+                            working with PLCs and control logic for space-environment simulation equipment</li>
+                        <li>Worked alongside technicians, controls engineers, and test leads under the safety,
+                            documentation, and review procedures required for mission-critical test operations</li>
+                    </ul>
+                </article>
+            </section>
 
-            <div class="featured-project">
-                <h2>FPGA Neural Network Accelerator</h2>
-                <p class="subtitle">On-chip neural network inference — Verilog to silicon.</p>
+            <section>
+                <h2 class="section-title">Projects</h2>
 
-                <div class="tech-grid">
-                    <div class="tech-group">
-                        <h3>Hardware</h3>
-                        <p>Xilinx Artix-7 XC7A35T, Digilent Basys 3</p>
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3>Neural Network Inference Accelerator</h3>
+                        <span class="entry-date">Python, PyTorch, Verilog, Vivado</span>
                     </div>
-                    <div class="tech-group">
-                        <h3>RTL</h3>
-                        <p>Verilog, Vivado, DSP48E1 MAC Array</p>
-                    </div>
-                    <div class="tech-group">
-                        <h3>ML Pipeline</h3>
-                        <p>PyTorch, INT8 Post-Training Quantization</p>
-                    </div>
-                    <div class="tech-group">
-                        <h3>Verification</h3>
-                        <p>Python Golden Model, Self-Checking Testbenches</p>
-                    </div>
-                </div>
+                    <p class="entry-sub-single">On-chip neural network inference — PyTorch to FPGA fabric.</p>
 
-                <p class="project-note">24-class ASL classification at 100 MHz. ~65 µs per inference, 92% INT8 accuracy. No external memory, no soft-core CPU.</p>
-                <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank" rel="noopener noreferrer">Demo on GitHub</a></p>
-            </div>
-
-            <div class="featured-project">
-                <h2>Velo Lift</h2>
-                <p class="subtitle">Barbell velocity tracker — hardware to web app.</p>
-
-                <div class="tech-grid">
-                    <div class="tech-group">
-                        <h3>Hardware</h3>
-                        <p>Arduino Uno, 600P/R Rotary Encoder, C++</p>
+                    <div class="tech-grid">
+                        <div class="tech-group">
+                            <h4>Hardware</h4>
+                            <p>Xilinx Artix-7 XC7A35T, Digilent Basys 3</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>RTL</h4>
+                            <p>Verilog, Vivado, DSP48E1 MAC Array</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>ML Pipeline</h4>
+                            <p>PyTorch, INT8 Post-Training Quantization</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Verification</h4>
+                            <p>Golden Model, Self-Checking Testbenches, SymbiYosys</p>
+                        </div>
                     </div>
-                    <div class="tech-group">
-                        <h3>Frontend</h3>
-                        <p>React 19, Vite 7, Tailwind 4</p>
-                    </div>
-                    <div class="tech-group">
-                        <h3>Backend</h3>
-                        <p>FastAPI, Python, pyserial</p>
-                    </div>
-                    <div class="tech-group">
-                        <h3>Mechanical</h3>
-                        <p>OpenSCAD, 3D Printing</p>
-                    </div>
-                </div>
 
-                <p class="project-note">All data stays local. No accounts, no cloud.</p>
-                <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank" rel="noopener noreferrer">Demo on X</a></p>
-            </div>
+                    <ul class="work-list">
+                        <li>Trained a 784→128→24 classifier in PyTorch for 24-class ASL hand-sign recognition, then
+                            built a custom accelerator to run inference at 100 MHz with no external memory and no CPU
+                        </li>
+                        <li>Wrote an end-to-end Python quantization toolchain that computes per-layer scale factors,
+                            converts FP32 weights to INT8 using power-of-two shifts so rescaling reduces to bit shifts
+                            in hardware, and emits memory initialization files; held INT8 accuracy at ~92% against a 93%
+                            FP32 baseline</li>
+                        <li>Built a cycle-accurate Python golden model and self-checking test harness that validated the
+                            implementation as bit-exact before deployment, catching quantization and overflow defects
+                            early</li>
+                        <li>Extending verification with SystemVerilog assertions discharged formally via SymbiYosys,
+                            proving accumulator overflow cannot occur for any legal input sequence and that the datapath
+                            handshake is deadlock-free</li>
+                    </ul>
 
-            <p>
-                Into AI/ML, Bitcoin, reading, and space.
+                    <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
+                            rel="noopener noreferrer">Demo on GitHub</a></p>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3>Model Rocket Avionics &amp; Airframe <span class="status-tag">In Progress</span></h3>
+                        <span class="entry-date">Embedded C++, ESP32-S3, KiCad, LTspice</span>
+                    </div>
+                    <p class="entry-sub-single">A scratch-built 2.5" rocket and the flight computer that measures it.
+                    </p>
+
+                    <div class="tech-grid">
+                        <div class="tech-group">
+                            <h4>Avionics</h4>
+                            <p>ESP32-S3, BME280 over I2C, TPS61023 Boost Converter</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Firmware</h4>
+                            <p>Embedded C++, microSD Logging at 20 Hz</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Board Design</h4>
+                            <p>KiCad Two-Layer PCB, LTspice</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Airframe</h4>
+                            <p>OpenSCAD, OpenRocket, 3D Printing</p>
+                        </div>
+                    </div>
+
+                    <ul class="work-list">
+                        <li>Designing and building a scratch-built 2.5" model rocket with a custom onboard altimeter to
+                            compare OpenRocket-simulated apogee against measured flight data and validate the simulation
+                            model</li>
+                        <li>Built a standalone flight computer from discrete components rather than an off-the-shelf
+                            altimeter: ESP32-S3, BME280 barometric sensor over I2C, and a TPS61023 boost converter
+                            stepping a 3.7V LiPo to a 5V rail; bench-validated on breadboard, then migrated to soldered
+                            perfboard sized to fit the nose cone</li>
+                        <li>Wrote embedded C++ firmware that captures a 10-sample ground-level pressure baseline on boot
+                            and logs timestamped pressure, temperature, and relative altitude to microSD at 20 Hz</li>
+                        <li>Migrating from perfboard to a custom two-layer PCB in KiCad — schematic capture, footprint
+                            selection, power routing, fabrication-ready Gerbers — with the boost converter modeled in
+                            LTspice and simulated rail transients checked against bench measurements</li>
+                        <li>Modeled the nose cone, fin can, and avionics deck parametrically in OpenSCAD; sited avionics
+                            in the nose cone rather than a mid-body bay to shift CG forward and isolate the sensor from
+                            ejection gas, validating stability margin in OpenRocket</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3>Barbell Velocity Tracker</h3>
+                        <span class="entry-date">C++, Arduino, Signal Processing, OpenSCAD</span>
+                    </div>
+                    <p class="entry-sub-single">Instrumenting a piece of gym equipment end to end.</p>
+
+                    <div class="tech-grid">
+                        <div class="tech-group">
+                            <h4>Hardware</h4>
+                            <p>Arduino Uno, 600P/R Rotary Encoder, C++</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Frontend</h4>
+                            <p>React 19, Vite 7, Tailwind 4</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Backend</h4>
+                            <p>FastAPI, Python, pyserial</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Mechanical</h4>
+                            <p>OpenSCAD, 3D Printing</p>
+                        </div>
+                    </div>
+
+                    <ul class="work-list">
+                        <li>Built a real-time C++ data acquisition system reading high-precision rotary encoders to
+                            compute bar velocity, with digital filtering to improve signal-to-noise ratio</li>
+                        <li>Packaged the sensor in 3D-printed housings designed in parametric CAD, with a local web app
+                            for live feedback — all data stays on device, no accounts and no cloud</li>
+                    </ul>
+
+                    <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
+                            rel="noopener noreferrer">Demo on X</a></p>
+                </article>
+            </section>
+
+            <section>
+                <h2 class="section-title">Education</h2>
+
+                <article class="entry entry-tight">
+                    <div class="entry-head">
+                        <h3>The Ohio State University</h3>
+                        <span class="entry-date">Aug. 2026 – May 2029</span>
+                    </div>
+                    <div class="entry-sub">
+                        <span>B.S. Electrical and Computer Engineering (Incoming Transfer)</span>
+                        <span class="entry-place">Columbus, OH</span>
+                    </div>
+                </article>
+
+                <article class="entry entry-tight">
+                    <div class="entry-head">
+                        <h3>Lorain County Community College</h3>
+                        <span class="entry-date">Aug. 2023 – Aug. 2026</span>
+                    </div>
+                    <div class="entry-sub">
+                        <span>Associate of Science in Engineering — GPA 3.65</span>
+                        <span class="entry-place">Elyria, OH</span>
+                    </div>
+                </article>
+            </section>
+
+            <section>
+                <h2 class="section-title">Skills</h2>
+
+                <dl class="skills">
+                    <dt>Languages</dt>
+                    <dd>Python, C++, Verilog, SystemVerilog, MATLAB</dd>
+
+                    <dt>Digital Design &amp; Verification</dt>
+                    <dd>Vivado (Synthesis, Static Timing Analysis), SystemVerilog Assertions, Formal Property Checking
+                        (SymbiYosys), Self-Checking Testbenches, Golden-Reference Models</dd>
+
+                    <dt>Circuit &amp; Mechanical Design</dt>
+                    <dd>KiCad (Schematic Capture, PCB Layout), LTspice, OpenSCAD, OpenRocket</dd>
+
+                    <dt>Instrumentation &amp; Controls</dt>
+                    <dd>PLCs, DAQ, Load Cells, Rotary Encoders, I2C Sensors, Soldering &amp; Harnessing, Arduino,
+                        ESP32-S3</dd>
+
+                    <dt>ML &amp; Tooling</dt>
+                    <dd>PyTorch, INT8 Post-Training Quantization, Git, Linux (Ubuntu), Bash, Claude Code</dd>
+
+                    <dt>Certifications</dt>
+                    <dd>CS50P: Programming with Python (Harvard) · Practical Deep Learning for Coders (fast.ai)</dd>
+                </dl>
+            </section>
+
+            <p class="outro">
+                Outside of that: AI/ML, Bitcoin, reading, and space.
             </p>
 
             <div class="contact">
