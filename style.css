@@ -113,72 +113,154 @@ main a:hover {
     opacity: 0.7;
 }
 
-/* Featured Project */
-.featured-project {
-    margin: 60px 0;
-    padding: 32px 0;
-    border-top: 1px solid var(--border-color);
+.intro {
+    margin-bottom: 72px;
+}
+
+/* Resume-style sections */
+section {
+    margin-bottom: 64px;
+}
+
+.section-title {
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted-color);
+    padding-bottom: 10px;
+    margin-bottom: 32px;
     border-bottom: 1px solid var(--border-color);
 }
 
-.featured-project h2 {
-    font-size: 1.5rem;
+/* Entries — one job, project, or degree */
+.entry {
+    margin-bottom: 48px;
+}
+
+.entry:last-child {
+    margin-bottom: 0;
+}
+
+.entry-tight {
+    margin-bottom: 28px;
+}
+
+.entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.entry-head h3 {
+    font-size: 1.25rem;
     font-weight: 400;
     letter-spacing: -0.01em;
-    margin-bottom: 8px;
 }
 
-.featured-project .subtitle {
-    font-size: 1.05rem;
+.entry-date {
+    font-size: 0.85rem;
     color: var(--muted-color);
-    margin-bottom: 32px;
+    white-space: nowrap;
 }
 
-.featured-project + .featured-project {
-    border-top: none;
+.entry-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--muted-color);
+    margin-top: 4px;
+}
+
+.entry-place {
+    white-space: nowrap;
+}
+
+.entry-sub-single {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--muted-color);
+    margin: 4px 0 0;
+}
+
+.entry-head + .work-list,
+.entry-sub + .work-list,
+.entry-sub-single + .work-list {
+    margin-top: 20px;
 }
 
 .project-link {
     margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 0.95rem;
 }
 
 .tech-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
+    gap: 20px 32px;
+    margin-top: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.tech-group h3 {
-    font-size: 0.8rem;
+.tech-group h4 {
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--muted-color);
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .tech-group p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 0;
     line-height: 1.6;
 }
 
-.project-note {
-    font-size: 0.95rem;
-    color: var(--muted-color);
-    font-style: italic;
-}
-
 .status-tag {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted-color);
     border: 1px solid var(--border-color);
     padding: 2px 8px;
-    margin-left: 12px;
+    margin-left: 10px;
     vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Skills */
+.skills {
+    display: grid;
+    grid-template-columns: minmax(0, 15rem) 1fr;
+    gap: 16px 32px;
+}
+
+.skills dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-color);
+    line-height: 1.6;
+    padding-top: 0.2em;
+}
+
+.skills dd {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.outro {
+    margin-top: 72px;
 }
 
 .work-list {
@@ -318,13 +400,35 @@ footer {
         margin-bottom: 32px;
     }
 
-    .featured-project h2 {
-        font-size: 1.3rem;
+    .intro,
+    .outro {
+        margin-bottom: 56px;
+    }
+
+    .outro {
+        margin-top: 56px;
+    }
+
+    section {
+        margin-bottom: 56px;
+    }
+
+    .entry-head h3 {
+        font-size: 1.15rem;
     }
 
     .tech-grid {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .skills dd:not(:last-child) {
+        margin-bottom: 16px;
     }
 
     footer {
@@ -341,6 +445,16 @@ footer {
     .tech-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .entry-head,
+    .entry-sub {
+        gap: 2px;
+    }
+
+    .entry-date,
+    .entry-place {
+        white-space: normal;
     }
 
     footer {
