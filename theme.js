@@ -3,7 +3,7 @@
     var html = document.documentElement;
     var toggle = document.getElementById('themeToggle');
 
-    var stored = localStorage.getItem('theme') || 'dark';
+    var stored = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', stored);
 
     if (toggle) {
