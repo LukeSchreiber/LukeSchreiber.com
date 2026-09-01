@@ -208,10 +208,133 @@ section {
     margin-top: 20px;
 }
 
+.entry-note {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 12px 0 0;
+}
+
 .project-link {
     margin-top: 16px;
     margin-bottom: 0;
     font-size: 0.95rem;
+}
+
+/* Project index — the whole row is the link */
+.project-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 24px;
+    padding: 24px 0;
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-row:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.project-row-title {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.project-row:hover .project-row-title {
+    text-decoration: underline;
+}
+
+.project-row-tech {
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    white-space: nowrap;
+}
+
+.project-row-tech::after {
+    content: '→';
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.2s ease;
+}
+
+.project-row:hover .project-row-tech::after {
+    transform: translateX(4px);
+}
+
+.project-row-note {
+    grid-column: 1 / -1;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--muted-color);
+}
+
+/* Project pages */
+.back-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    border-bottom: none;
+    margin-bottom: 36px;
+}
+
+.back-link:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.lede {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin-bottom: 8px;
+}
+
+.section-note {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--muted-color);
+    margin: 0 0 24px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 28px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    white-space: nowrap;
+    padding: 12px 28px 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td:first-child {
+    white-space: normal;
+    color: var(--muted-color);
+}
+
+.data-table th {
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-color);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+code {
+    font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+    font-size: 0.85em;
 }
 
 .tech-grid {
@@ -219,6 +342,7 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 20px 32px;
     margin-top: 24px;
+    margin-bottom: 72px;
     padding: 20px 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -309,10 +433,10 @@ section {
 /* Books page — Page Title */
 .page-title {
     position: relative;
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     font-weight: 400;
     letter-spacing: -0.01em;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     padding-bottom: 24px;
     border-bottom: 1px solid var(--border-color);
 }
@@ -459,6 +583,20 @@ footer {
     .tech-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .project-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .project-row-tech {
+        white-space: normal;
+        order: 3;
+    }
+
+    .project-row-note {
+        order: 2;
     }
 
     .entry-head,

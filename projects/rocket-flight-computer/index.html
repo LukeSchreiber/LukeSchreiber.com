@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Rocket &amp; ESP32 Flight Computer — Luke Schreiber</title>
+    <meta name="description"
+        content="A scratch-built model rocket and a custom ESP32-S3 flight computer that logged barometric altitude at 20 Hz. Measured apogee 390.7 ft — 0.2% off the OpenRocket prediction.">
+    <link rel="canonical" href="https://lukeschreiber.com/projects/rocket-flight-computer/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukeschreiber.com/projects/rocket-flight-computer/">
+    <meta property="og:title" content="Model Rocket &amp; ESP32 Flight Computer">
+    <meta property="og:description"
+        content="Measured apogee 390.7 ft — 0.2% off the OpenRocket prediction, logged at 20 Hz on a custom ESP32-S3 flight computer.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@LukeSchreiberX">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../../">Luke Schreiber</a></div>
+            <nav>
+                <a href="../../books/">Books</a>
+                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
+                <button class="theme-toggle" id="themeToggle">☾</button>
+            </nav>
+        </header>
+
+        <main>
+            <a class="back-link" href="../../">← Projects</a>
+
+            <h1 class="page-title">Model Rocket &amp; ESP32 Flight Computer</h1>
+
+            <p class="lede">A rocket built from scratch, a flight computer built from parts instead of bought, and a
+                log pulled off the flash afterward that matched the pre-flight simulation to 0.2%.</p>
+
+            <div class="tech-grid">
+                <div class="tech-group">
+                    <h4>Avionics</h4>
+                    <p>ESP32-S3, BME280 over I²C, TPS61023 Boost Converter</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Firmware</h4>
+                    <p>Embedded C++, 20 Hz Logging to LittleFS Flash</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Airframe</h4>
+                    <p>SOLIDWORKS, OpenRocket, 3D Printing</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Recovery</h4>
+                    <p>Parachute on Motor Ejection Charge</p>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">The Build</h2>
+
+                <ul class="work-list">
+                    <li>Built the flight computer from discrete parts on soldered perfboard instead of buying an
+                        off-the-shelf altimeter — ESP32-S3, BME280 barometer on I²C, TPS61023 boost converter for the
+                        rail</li>
+                    <li>Firmware averages ten pressure samples on boot for a ground baseline, then logs time, pressure,
+                        temperature, and derived altitude at 20 Hz with the pressure reading oversampled 16×</li>
+                    <li>Each power cycle opens a new <code>flight_N.csv</code>, flushed to flash every second, so an
+                        unexpected power loss costs at most one second of data and never overwrites an earlier flight
+                    </li>
+                    <li>Serial console at 115200 baud lists stored logs, dumps them for retrieval, erases flash, and
+                        pauses capture</li>
+                    <li>Fin can, nose cone, and launch-rail clamp modeled in SOLIDWORKS and 3D printed; recovery is a
+                        parachute deployed by the motor's ejection charge</li>
+                    <li>Launched on a hand-built nichrome igniter fired from a 9 V controller with a two-stage
+                        interlock — an arming switch in series with a momentary button, so no single press can energize
+                        the igniter</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="section-title">Measured vs. Predicted</h2>
+
+                <p class="section-note">The OpenRocket model was built before the flight. 401 samples came back off the
+                    flash afterward.</p>
+
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Predicted</th>
+                                <th>Measured</th>
+                                <th>Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apogee</td>
+                                <td>390 ft</td>
+                                <td>390.7 ft</td>
+                                <td>+0.2%</td>
+                            </tr>
+                            <tr>
+                                <td>Time to apogee</td>
+                                <td>3.2 s</td>
+                                <td>3.20 s</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Total flight time</td>
+                                <td>19.3 s</td>
+                                <td>19.2 s</td>
+                                <td>−0.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Peak velocity</td>
+                                <td>327 ft/s</td>
+                                <td>307 ft/s</td>
+                                <td>−6%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul class="work-list">
+                    <li>Apogee and timing landed within a fraction of a percent. The velocity gap is expected — there
+                        is no accelerometer on board, so climb rate is finite-differenced from barometric altitude,
+                        which lags during the two-second burn and smooths the true peak</li>
+                    <li>Ground samples before launch and after landing spread ±0.2 m, which is the practical altitude
+                        resolution of the BME280 here — small enough to resolve a 119 m apogee to better than
+                        0.2%</li>
+                    <li>Descent under parachute settled at 7.6 m/s</li>
+                </ul>
+            </section>
+
+            <p class="project-link"><a href="https://github.com/LukeSchreiber/High-Power-Rocket-and-Flight-Computer"
+                    target="_blank" rel="noopener noreferrer">Firmware, CAD, and flight data on GitHub</a> · Two-person
+                build with Adriano Zagar</p>
+        </main>
+
+        <footer class="footer-spaced">
+            <div>&copy; 2026 Luke Schreiber</div>
+            <div id="location-time">Cleveland, OH</div>
+        </footer>
+    </div>
+
+    <script src="../../theme.js"></script>
+</body>
+
+</html>

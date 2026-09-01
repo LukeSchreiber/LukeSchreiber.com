@@ -21,9 +21,9 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo"><a href="/">Luke Schreiber</a></div>
+            <div class="logo"><a href="../">Luke Schreiber</a></div>
             <nav>
-                <a href="/books">Books</a>
+                <a href="./">Books</a>
                 <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
@@ -149,36 +149,7 @@
         </footer>
     </div>
 
-    <script>
-        // Theme toggle - sync with main site
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', currentTheme);
-        themeToggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
-
-        themeToggle.addEventListener('click', () => {
-            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
-        });
-
-        // Update time
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
-            document.getElementById('location-time').textContent = `Cleveland, OH · ${timeString}`;
-        }
-
-        updateTime();
-        setInterval(updateTime, 60000);
-    </script>
+    <script src="../theme.js"></script>
 </body>
 
 </html>

@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Schreiber</title>
-    <meta name="description" content="Luke Schreiber — electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn. Digital design, embedded systems, and instrumentation.">
+    <meta name="description"
+        content="Luke Schreiber — electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn. FPGA accelerators, flight computers, and instrumentation.">
     <link rel="canonical" href="https://lukeschreiber.com/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lukeschreiber.com/">
     <meta property="og:title" content="Luke Schreiber">
-    <meta property="og:description" content="Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn. Digital design, embedded systems, and instrumentation.">
+    <meta property="og:description"
+        content="Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@LukeSchreiberX">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -21,11 +23,12 @@
 <body>
     <div class="container">
         <header>
-            <h1 class="logo"><a href="/">Luke Schreiber</a></h1>
+            <h1 class="logo"><a href="./">Luke Schreiber</a></h1>
             <nav>
-                <a href="/books">Books</a>
+                <a href="books/">Books</a>
                 <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
                 <button class="theme-toggle" id="themeToggle">☾</button>
             </nav>
@@ -33,152 +36,52 @@
 
         <main>
             <p class="intro">
-                Electrical and computer engineering student at Ohio State. Electrical test engineer intern at NASA
-                Glenn. RTL and formal verification, embedded firmware, and the instrumentation around them.
+                Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA
+                Glenn. I build hardware that measures things.
             </p>
 
             <section>
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Work</h2>
 
-                <article class="entry">
+                <article class="entry entry-tight">
                     <div class="entry-head">
                         <h3>Electrical Test Engineer Intern</h3>
-                        <span class="entry-date">June 2026 – Aug. 2026</span>
+                        <span class="entry-date">Summer 2026</span>
                     </div>
                     <div class="entry-sub">
-                        <span>HX5 LLC — NASA Glenn Research Center, Space Environments Test Branch</span>
+                        <span>HX5 — NASA Glenn Research Center</span>
                         <span class="entry-place">Cleveland, OH</span>
                     </div>
-                    <ul class="work-list">
-                        <li>Wrote Arduino/C++ firmware for a rocket static test stand — load-cell thrust measurement, SD
-                            logging, relay ignition interlocks — and wired the electrical system</li>
-                        <li>Supported instrumentation, PLC controls, and data systems for vacuum chamber test
-                            facilities, under mission-critical safety and review procedures</li>
-                    </ul>
+                    <p class="entry-note">Firmware and wiring for a rocket static test stand, plus instrumentation and
+                        PLC controls for vacuum chamber test facilities.</p>
                 </article>
             </section>
 
             <section>
                 <h2 class="section-title">Projects</h2>
 
-                <article class="entry">
-                    <div class="entry-head">
-                        <h3>Neural Network Inference Accelerator</h3>
-                        <span class="entry-date">Python, PyTorch, Verilog, Vivado</span>
-                    </div>
-                    <p class="entry-sub-single">On-chip neural network inference — PyTorch to FPGA fabric.</p>
+                <div class="project-list">
+                    <a class="project-row" href="projects/rocket-flight-computer/">
+                        <span class="project-row-title">Model Rocket &amp; ESP32 Flight Computer</span>
+                        <span class="project-row-tech">Embedded C++ · ESP32-S3</span>
+                        <span class="project-row-note">Flew to 390.7 ft and matched the simulated apogee to
+                            0.2%.</span>
+                    </a>
 
-                    <div class="tech-grid">
-                        <div class="tech-group">
-                            <h4>Hardware</h4>
-                            <p>Xilinx Artix-7 XC7A35T, Digilent Basys 3</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>RTL</h4>
-                            <p>Verilog, Vivado, DSP48E1 MAC Array</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>ML Pipeline</h4>
-                            <p>PyTorch, INT8 Post-Training Quantization</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Verification</h4>
-                            <p>Golden Model, Self-Checking Testbenches, SymbiYosys</p>
-                        </div>
-                    </div>
+                    <a class="project-row" href="projects/neural-network-accelerator/">
+                        <span class="project-row-title">Neural Network Inference Accelerator</span>
+                        <span class="project-row-tech">Verilog · Artix-7</span>
+                        <span class="project-row-note">An ASL hand-sign classifier running on FPGA fabric at 100 MHz,
+                            no CPU.</span>
+                    </a>
 
-                    <ul class="work-list">
-                        <li>Trained a 784→128→24 ASL hand-sign classifier in PyTorch, then built an accelerator that
-                            runs inference at 100 MHz with no CPU and no external memory</li>
-                        <li>Python toolchain quantizes FP32 weights to INT8 with power-of-two scales, so rescaling is a
-                            bit shift in hardware — ~92% accuracy against a 93% FP32 baseline</li>
-                        <li>A cycle-accurate golden model proved the RTL bit-exact; extending it with SystemVerilog
-                            assertions discharged formally in SymbiYosys for overflow and deadlock freedom</li>
-                    </ul>
-
-                    <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
-                            rel="noopener noreferrer">Demo on GitHub</a></p>
-                </article>
-
-                <article class="entry">
-                    <div class="entry-head">
-                        <h3>Model Rocket &amp; ESP32 Flight Computer</h3>
-                        <span class="entry-date">Embedded C++, ESP32-S3, SOLIDWORKS, OpenRocket</span>
-                    </div>
-                    <p class="entry-sub-single">Flown and recovered — measured apogee matched the simulation to 0.2%.
-                    </p>
-
-                    <div class="tech-grid">
-                        <div class="tech-group">
-                            <h4>Avionics</h4>
-                            <p>ESP32-S3, BME280 over I²C, TPS61023 Boost Converter</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Firmware</h4>
-                            <p>Embedded C++, 20 Hz Logging to LittleFS Flash</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Airframe</h4>
-                            <p>SOLIDWORKS, OpenRocket, 3D Printing</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Measured Apogee</h4>
-                            <p>119.1 m (390.7 ft) — +0.2% vs. prediction</p>
-                        </div>
-                    </div>
-
-                    <ul class="work-list">
-                        <li>Built the flight computer from discrete parts on soldered perfboard instead of an
-                            off-the-shelf altimeter — ESP32-S3, BME280 over I²C, TPS61023 boost converter</li>
-                        <li>Firmware takes a ground pressure baseline on boot and logs altitude, pressure, and
-                            temperature to onboard flash at 20 Hz; 401 samples came back after the flight — 19.2 s
-                            aloft, 7.6 m/s under parachute, ±0.2 m resolution</li>
-                        <li>Fin can, nose cone, and rail clamp modeled in SOLIDWORKS and 3D printed; launched on a
-                            hand-built nichrome igniter behind a two-stage arming interlock</li>
-                    </ul>
-
-                    <p class="project-link"><a
-                            href="https://github.com/LukeSchreiber/High-Power-Rocket-and-Flight-Computer"
-                            target="_blank" rel="noopener noreferrer">Build and flight data on GitHub</a> · Two-person
-                        build with Adriano Zagar</p>
-                </article>
-
-                <article class="entry">
-                    <div class="entry-head">
-                        <h3>Barbell Velocity Tracker</h3>
-                        <span class="entry-date">C++, Arduino, Signal Processing, OpenSCAD</span>
-                    </div>
-                    <p class="entry-sub-single">Instrumenting a piece of gym equipment end to end.</p>
-
-                    <div class="tech-grid">
-                        <div class="tech-group">
-                            <h4>Hardware</h4>
-                            <p>Arduino Uno, 600P/R Rotary Encoder, C++</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Frontend</h4>
-                            <p>React 19, Vite 7, Tailwind 4</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Backend</h4>
-                            <p>FastAPI, Python, pyserial</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Mechanical</h4>
-                            <p>OpenSCAD, 3D Printing</p>
-                        </div>
-                    </div>
-
-                    <ul class="work-list">
-                        <li>Real-time C++ acquisition off a 600 P/R rotary encoder computes bar velocity, with digital
-                            filtering for signal-to-noise</li>
-                        <li>Packaged in 3D-printed housings with a local web app for live feedback — all data stays on
-                            device, no accounts and no cloud</li>
-                    </ul>
-
-                    <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
-                            rel="noopener noreferrer">Demo on X</a></p>
-                </article>
+                    <a class="project-row" href="projects/barbell-velocity-tracker/">
+                        <span class="project-row-title">Barbell Velocity Tracker</span>
+                        <span class="project-row-tech">C++ · Arduino</span>
+                        <span class="project-row-note">Encoder data acquisition and a live readout that never leaves
+                            the device.</span>
+                    </a>
+                </div>
             </section>
 
             <section>
@@ -187,10 +90,10 @@
                 <article class="entry entry-tight">
                     <div class="entry-head">
                         <h3>The Ohio State University</h3>
-                        <span class="entry-date">Aug. 2026 – May 2029</span>
+                        <span class="entry-date">2026 – 2029</span>
                     </div>
                     <div class="entry-sub">
-                        <span>B.S. Electrical and Computer Engineering (Incoming Transfer)</span>
+                        <span>B.S. Electrical and Computer Engineering</span>
                         <span class="entry-place">Columbus, OH</span>
                     </div>
                 </article>
@@ -198,10 +101,10 @@
                 <article class="entry entry-tight">
                     <div class="entry-head">
                         <h3>Lorain County Community College</h3>
-                        <span class="entry-date">Aug. 2023 – Aug. 2026</span>
+                        <span class="entry-date">2023 – 2026</span>
                     </div>
                     <div class="entry-sub">
-                        <span>Associate of Science in Engineering — GPA 3.65</span>
+                        <span>A.S. Engineering — GPA 3.65</span>
                         <span class="entry-place">Elyria, OH</span>
                     </div>
                 </article>
@@ -214,19 +117,16 @@
                     <dt>Languages</dt>
                     <dd>Python, C++, Verilog, SystemVerilog, MATLAB</dd>
 
-                    <dt>Digital Design &amp; Verification</dt>
-                    <dd>Vivado, SystemVerilog Assertions, Formal Property Checking (SymbiYosys), Self-Checking
-                        Testbenches, Golden-Reference Models</dd>
+                    <dt>Digital Design</dt>
+                    <dd>Vivado, SystemVerilog Assertions, Formal Verification (SymbiYosys), Self-Checking Testbenches
+                    </dd>
 
-                    <dt>Hardware &amp; Instrumentation</dt>
-                    <dd>SOLIDWORKS, OpenSCAD, OpenRocket, PLCs, DAQ, Load Cells, Encoders, I²C Sensors, Arduino &amp;
-                        ESP32-S3, Soldering &amp; Harnessing</dd>
+                    <dt>Hardware</dt>
+                    <dd>SOLIDWORKS, OpenSCAD, OpenRocket, PLCs, DAQ, Load Cells, I²C Sensors, Arduino &amp; ESP32-S3,
+                        Soldering</dd>
 
-                    <dt>ML &amp; Tooling</dt>
-                    <dd>PyTorch, INT8 Quantization, Git, Linux, Bash, Claude Code</dd>
-
-                    <dt>Certifications</dt>
-                    <dd>CS50P: Programming with Python (Harvard) · Practical Deep Learning for Coders (fast.ai)</dd>
+                    <dt>Tooling</dt>
+                    <dd>PyTorch, Git, Linux, Bash, Claude Code</dd>
                 </dl>
             </section>
 
@@ -246,36 +146,7 @@
         </footer>
     </div>
 
-    <script>
-        // Theme toggle - default to dark
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', currentTheme);
-        themeToggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
-
-        themeToggle.addEventListener('click', () => {
-            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
-        });
-
-        // Update time
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
-            document.getElementById('location-time').textContent = `Cleveland, OH · ${timeString}`;
-        }
-
-        updateTime();
-        setInterval(updateTime, 60000);
-    </script>
+    <script src="theme.js"></script>
 </body>
 
 </html>

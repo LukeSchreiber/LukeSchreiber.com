@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbell Velocity Tracker — Luke Schreiber</title>
+    <meta name="description"
+        content="A rotary encoder, real-time C++ data acquisition, and a local web app that measures barbell velocity without sending anything to the cloud.">
+    <link rel="canonical" href="https://lukeschreiber.com/projects/barbell-velocity-tracker/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukeschreiber.com/projects/barbell-velocity-tracker/">
+    <meta property="og:title" content="Barbell Velocity Tracker">
+    <meta property="og:description"
+        content="Encoder data acquisition and a live velocity readout that never leaves the device.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@LukeSchreiberX">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../../">Luke Schreiber</a></div>
+            <nav>
+                <a href="../../books/">Books</a>
+                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
+                <button class="theme-toggle" id="themeToggle">☾</button>
+            </nav>
+        </header>
+
+        <main>
+            <a class="back-link" href="../../">← Projects</a>
+
+            <h1 class="page-title">Barbell Velocity Tracker</h1>
+
+            <p class="lede">Instrumenting a piece of gym equipment end to end — a rotary encoder on the bar, filtered
+                velocity computed in real time, and a readout that never leaves the device.</p>
+
+            <div class="tech-grid">
+                <div class="tech-group">
+                    <h4>Hardware</h4>
+                    <p>Arduino Uno, 600 P/R Rotary Encoder, C++</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Frontend</h4>
+                    <p>React 19, Vite 7, Tailwind 4</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Backend</h4>
+                    <p>FastAPI, Python, pyserial</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Mechanical</h4>
+                    <p>OpenSCAD, 3D Printing</p>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">The Build</h2>
+
+                <ul class="work-list">
+                    <li>Real-time C++ acquisition reads a 600 pulse-per-revolution rotary encoder and computes bar
+                        velocity, with digital filtering to pull the signal out of the noise a moving barbell
+                        generates</li>
+                    <li>Packaged the sensor in 3D-printed housings modeled parametrically in OpenSCAD, so the mount
+                        adapts to different bars without a redesign</li>
+                    <li>A local web app reads the serial stream through a FastAPI backend and shows velocity live — no
+                        accounts, no cloud, and all data stays on the machine it was measured on</li>
+                </ul>
+            </section>
+
+            <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
+                    rel="noopener noreferrer">Demo on X</a></p>
+        </main>
+
+        <footer class="footer-spaced">
+            <div>&copy; 2026 Luke Schreiber</div>
+            <div id="location-time">Cleveland, OH</div>
+        </footer>
+    </div>
+
+    <script src="../../theme.js"></script>
+</body>
+
+</html>

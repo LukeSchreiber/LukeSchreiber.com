@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Inference Accelerator — Luke Schreiber</title>
+    <meta name="description"
+        content="A 24-class ASL hand-sign classifier trained in PyTorch and run entirely on FPGA fabric at 100 MHz — INT8 quantization, DSP48E1 MAC array, formal verification in SymbiYosys.">
+    <link rel="canonical" href="https://lukeschreiber.com/projects/neural-network-accelerator/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukeschreiber.com/projects/neural-network-accelerator/">
+    <meta property="og:title" content="Neural Network Inference Accelerator">
+    <meta property="og:description"
+        content="An ASL hand-sign classifier running on FPGA fabric at 100 MHz — no CPU, no external memory.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@LukeSchreiberX">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../../">Luke Schreiber</a></div>
+            <nav>
+                <a href="../../books/">Books</a>
+                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
+                <button class="theme-toggle" id="themeToggle">☾</button>
+            </nav>
+        </header>
+
+        <main>
+            <a class="back-link" href="../../">← Projects</a>
+
+            <h1 class="page-title">Neural Network Inference Accelerator</h1>
+
+            <p class="lede">A 24-class ASL hand-sign classifier trained in PyTorch, then quantized and rebuilt as
+                hardware — inference runs entirely on FPGA fabric at 100 MHz with no CPU and no external memory.</p>
+
+            <div class="tech-grid">
+                <div class="tech-group">
+                    <h4>Hardware</h4>
+                    <p>Xilinx Artix-7 XC7A35T, Digilent Basys 3</p>
+                </div>
+                <div class="tech-group">
+                    <h4>RTL</h4>
+                    <p>Verilog, Vivado, DSP48E1 MAC Array</p>
+                </div>
+                <div class="tech-group">
+                    <h4>ML Pipeline</h4>
+                    <p>PyTorch, INT8 Post-Training Quantization</p>
+                </div>
+                <div class="tech-group">
+                    <h4>Verification</h4>
+                    <p>Golden Model, Self-Checking Testbenches, SymbiYosys</p>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">The Build</h2>
+
+                <ul class="work-list">
+                    <li>Trained a 784→128→24 classifier in PyTorch, then built the accelerator to run that same network
+                        on-chip — weights live in block RAM, so nothing leaves the fabric at inference time</li>
+                    <li>Wrote an end-to-end Python quantization toolchain that computes per-layer scale factors,
+                        converts FP32 weights to INT8 using power-of-two shifts so rescaling reduces to a bit shift in
+                        hardware, and emits the memory initialization files the RTL loads</li>
+                    <li>Built a cycle-accurate Python golden model and a self-checking test harness that proved the
+                        implementation bit-exact against it, which caught quantization and overflow defects before
+                        anything reached the board</li>
+                    <li>Extending verification with SystemVerilog assertions discharged formally in SymbiYosys —
+                        proving accumulator overflow cannot occur for any legal input sequence, and that the datapath
+                        handshake is deadlock-free</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="section-title">Results</h2>
+
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td>Accuracy, FP32 baseline</td>
+                                <td>93%</td>
+                            </tr>
+                            <tr>
+                                <td>Accuracy, INT8 on hardware</td>
+                                <td>~92%</td>
+                            </tr>
+                            <tr>
+                                <td>Clock</td>
+                                <td>100 MHz</td>
+                            </tr>
+                            <tr>
+                                <td>External memory</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Softcore CPU</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
+                    rel="noopener noreferrer">Source and demo on GitHub</a></p>
+        </main>
+
+        <footer class="footer-spaced">
+            <div>&copy; 2026 Luke Schreiber</div>
+            <div id="location-time">Cleveland, OH</div>
+        </footer>
+    </div>
+
+    <script src="../../theme.js"></script>
+</body>
+
+</html>
