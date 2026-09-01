@@ -36,7 +36,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 100px;
     flex-wrap: wrap;
     gap: 20px;
