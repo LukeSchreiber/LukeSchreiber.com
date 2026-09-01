@@ -34,8 +34,7 @@
         <main>
             <p class="intro">
                 Electrical and computer engineering student at Ohio State. Electrical test engineer intern at NASA
-                Glenn. I build things that span the stack — RTL and formal verification, embedded firmware, PCBs,
-                and the test instrumentation around them.
+                Glenn. RTL and formal verification, embedded firmware, and the instrumentation around them.
             </p>
 
             <section>
@@ -51,13 +50,10 @@
                         <span class="entry-place">Cleveland, OH</span>
                     </div>
                     <ul class="work-list">
-                        <li>Authored Arduino/C++ firmware for a model rocket static test stand — load-cell thrust
-                            measurement, SD-card data logging, and relay-based ignition interlocks — and wired the full
-                            electrical system</li>
-                        <li>Supported instrumentation, controls, and data systems for vacuum chamber test facilities,
-                            working with PLCs and control logic for space-environment simulation equipment</li>
-                        <li>Worked alongside technicians, controls engineers, and test leads under the safety,
-                            documentation, and review procedures required for mission-critical test operations</li>
+                        <li>Wrote Arduino/C++ firmware for a rocket static test stand — load-cell thrust measurement, SD
+                            logging, relay ignition interlocks — and wired the electrical system</li>
+                        <li>Supported instrumentation, PLC controls, and data systems for vacuum chamber test
+                            facilities, under mission-critical safety and review procedures</li>
                     </ul>
                 </article>
             </section>
@@ -92,19 +88,12 @@
                     </div>
 
                     <ul class="work-list">
-                        <li>Trained a 784→128→24 classifier in PyTorch for 24-class ASL hand-sign recognition, then
-                            built a custom accelerator to run inference at 100 MHz with no external memory and no CPU
-                        </li>
-                        <li>Wrote an end-to-end Python quantization toolchain that computes per-layer scale factors,
-                            converts FP32 weights to INT8 using power-of-two shifts so rescaling reduces to bit shifts
-                            in hardware, and emits memory initialization files; held INT8 accuracy at ~92% against a 93%
-                            FP32 baseline</li>
-                        <li>Built a cycle-accurate Python golden model and self-checking test harness that validated the
-                            implementation as bit-exact before deployment, catching quantization and overflow defects
-                            early</li>
-                        <li>Extending verification with SystemVerilog assertions discharged formally via SymbiYosys,
-                            proving accumulator overflow cannot occur for any legal input sequence and that the datapath
-                            handshake is deadlock-free</li>
+                        <li>Trained a 784→128→24 ASL hand-sign classifier in PyTorch, then built an accelerator that
+                            runs inference at 100 MHz with no CPU and no external memory</li>
+                        <li>Python toolchain quantizes FP32 weights to INT8 with power-of-two scales, so rescaling is a
+                            bit shift in hardware — ~92% accuracy against a 93% FP32 baseline</li>
+                        <li>A cycle-accurate golden model proved the RTL bit-exact; extending it with SystemVerilog
+                            assertions discharged formally in SymbiYosys for overflow and deadlock freedom</li>
                     </ul>
 
                     <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
@@ -113,48 +102,45 @@
 
                 <article class="entry">
                     <div class="entry-head">
-                        <h3>Model Rocket Avionics &amp; Airframe <span class="status-tag">In Progress</span></h3>
-                        <span class="entry-date">Embedded C++, ESP32-S3, KiCad, LTspice</span>
+                        <h3>Model Rocket &amp; ESP32 Flight Computer</h3>
+                        <span class="entry-date">Embedded C++, ESP32-S3, SOLIDWORKS, OpenRocket</span>
                     </div>
-                    <p class="entry-sub-single">A scratch-built 2.5" rocket and the flight computer that measures it.
+                    <p class="entry-sub-single">Flown and recovered — measured apogee matched the simulation to 0.2%.
                     </p>
 
                     <div class="tech-grid">
                         <div class="tech-group">
                             <h4>Avionics</h4>
-                            <p>ESP32-S3, BME280 over I2C, TPS61023 Boost Converter</p>
+                            <p>ESP32-S3, BME280 over I²C, TPS61023 Boost Converter</p>
                         </div>
                         <div class="tech-group">
                             <h4>Firmware</h4>
-                            <p>Embedded C++, microSD Logging at 20 Hz</p>
-                        </div>
-                        <div class="tech-group">
-                            <h4>Board Design</h4>
-                            <p>KiCad Two-Layer PCB, LTspice</p>
+                            <p>Embedded C++, 20 Hz Logging to LittleFS Flash</p>
                         </div>
                         <div class="tech-group">
                             <h4>Airframe</h4>
-                            <p>OpenSCAD, OpenRocket, 3D Printing</p>
+                            <p>SOLIDWORKS, OpenRocket, 3D Printing</p>
+                        </div>
+                        <div class="tech-group">
+                            <h4>Measured Apogee</h4>
+                            <p>119.1 m (390.7 ft) — +0.2% vs. prediction</p>
                         </div>
                     </div>
 
                     <ul class="work-list">
-                        <li>Designing and building a scratch-built 2.5" model rocket with a custom onboard altimeter to
-                            compare OpenRocket-simulated apogee against measured flight data and validate the simulation
-                            model</li>
-                        <li>Built a standalone flight computer from discrete components rather than an off-the-shelf
-                            altimeter: ESP32-S3, BME280 barometric sensor over I2C, and a TPS61023 boost converter
-                            stepping a 3.7V LiPo to a 5V rail; bench-validated on breadboard, then migrated to soldered
-                            perfboard sized to fit the nose cone</li>
-                        <li>Wrote embedded C++ firmware that captures a 10-sample ground-level pressure baseline on boot
-                            and logs timestamped pressure, temperature, and relative altitude to microSD at 20 Hz</li>
-                        <li>Migrating from perfboard to a custom two-layer PCB in KiCad — schematic capture, footprint
-                            selection, power routing, fabrication-ready Gerbers — with the boost converter modeled in
-                            LTspice and simulated rail transients checked against bench measurements</li>
-                        <li>Modeled the nose cone, fin can, and avionics deck parametrically in OpenSCAD; sited avionics
-                            in the nose cone rather than a mid-body bay to shift CG forward and isolate the sensor from
-                            ejection gas, validating stability margin in OpenRocket</li>
+                        <li>Built the flight computer from discrete parts on soldered perfboard instead of an
+                            off-the-shelf altimeter — ESP32-S3, BME280 over I²C, TPS61023 boost converter</li>
+                        <li>Firmware takes a ground pressure baseline on boot and logs altitude, pressure, and
+                            temperature to onboard flash at 20 Hz; 401 samples came back after the flight — 19.2 s
+                            aloft, 7.6 m/s under parachute, ±0.2 m resolution</li>
+                        <li>Fin can, nose cone, and rail clamp modeled in SOLIDWORKS and 3D printed; launched on a
+                            hand-built nichrome igniter behind a two-stage arming interlock</li>
                     </ul>
+
+                    <p class="project-link"><a
+                            href="https://github.com/LukeSchreiber/High-Power-Rocket-and-Flight-Computer"
+                            target="_blank" rel="noopener noreferrer">Build and flight data on GitHub</a> · Two-person
+                        build with Adriano Zagar</p>
                 </article>
 
                 <article class="entry">
@@ -184,10 +170,10 @@
                     </div>
 
                     <ul class="work-list">
-                        <li>Built a real-time C++ data acquisition system reading high-precision rotary encoders to
-                            compute bar velocity, with digital filtering to improve signal-to-noise ratio</li>
-                        <li>Packaged the sensor in 3D-printed housings designed in parametric CAD, with a local web app
-                            for live feedback — all data stays on device, no accounts and no cloud</li>
+                        <li>Real-time C++ acquisition off a 600 P/R rotary encoder computes bar velocity, with digital
+                            filtering for signal-to-noise</li>
+                        <li>Packaged in 3D-printed housings with a local web app for live feedback — all data stays on
+                            device, no accounts and no cloud</li>
                     </ul>
 
                     <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
@@ -229,18 +215,15 @@
                     <dd>Python, C++, Verilog, SystemVerilog, MATLAB</dd>
 
                     <dt>Digital Design &amp; Verification</dt>
-                    <dd>Vivado (Synthesis, Static Timing Analysis), SystemVerilog Assertions, Formal Property Checking
-                        (SymbiYosys), Self-Checking Testbenches, Golden-Reference Models</dd>
+                    <dd>Vivado, SystemVerilog Assertions, Formal Property Checking (SymbiYosys), Self-Checking
+                        Testbenches, Golden-Reference Models</dd>
 
-                    <dt>Circuit &amp; Mechanical Design</dt>
-                    <dd>KiCad (Schematic Capture, PCB Layout), LTspice, OpenSCAD, OpenRocket</dd>
-
-                    <dt>Instrumentation &amp; Controls</dt>
-                    <dd>PLCs, DAQ, Load Cells, Rotary Encoders, I2C Sensors, Soldering &amp; Harnessing, Arduino,
-                        ESP32-S3</dd>
+                    <dt>Hardware &amp; Instrumentation</dt>
+                    <dd>SOLIDWORKS, OpenSCAD, OpenRocket, PLCs, DAQ, Load Cells, Encoders, I²C Sensors, Arduino &amp;
+                        ESP32-S3, Soldering &amp; Harnessing</dd>
 
                     <dt>ML &amp; Tooling</dt>
-                    <dd>PyTorch, INT8 Post-Training Quantization, Git, Linux (Ubuntu), Bash, Claude Code</dd>
+                    <dd>PyTorch, INT8 Quantization, Git, Linux, Bash, Claude Code</dd>
 
                     <dt>Certifications</dt>
                     <dd>CS50P: Programming with Python (Harvard) · Practical Deep Learning for Coders (fast.ai)</dd>
