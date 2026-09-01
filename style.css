@@ -114,23 +114,36 @@ main a:hover {
 }
 
 .intro {
-    margin-bottom: 72px;
+    margin-bottom: 80px;
 }
 
 /* Resume-style sections */
 section {
-    margin-bottom: 64px;
+    margin-bottom: 80px;
 }
 
 .section-title {
-    font-size: 0.85rem;
-    font-weight: 400;
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted-color);
-    padding-bottom: 10px;
-    margin-bottom: 32px;
+    letter-spacing: 0.16em;
+    color: var(--text-color);
+    padding-bottom: 14px;
+    margin-bottom: 36px;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* Weighted cap on the left of the section rule */
+.section-title::after,
+.page-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 44px;
+    height: 2px;
+    background-color: var(--text-color);
 }
 
 /* Entries — one job, project, or degree */
@@ -295,7 +308,8 @@ section {
 
 /* Books page — Page Title */
 .page-title {
-    font-size: 1.5rem;
+    position: relative;
+    font-size: 1.6rem;
     font-weight: 400;
     letter-spacing: -0.01em;
     margin-bottom: 48px;
@@ -402,7 +416,7 @@ footer {
 
     .intro,
     .outro {
-        margin-bottom: 56px;
+        margin-bottom: 64px;
     }
 
     .outro {
@@ -410,7 +424,7 @@ footer {
     }
 
     section {
-        margin-bottom: 56px;
+        margin-bottom: 64px;
     }
 
     .entry-head h3 {
