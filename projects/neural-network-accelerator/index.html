@@ -33,6 +33,13 @@
                     inference runs entirely on FPGA fabric at 100 MHz with no CPU and no external memory.</p>
             </div>
 
+            <figure>
+                <img src="img/host-dashboard.jpg" width="960" height="540" loading="lazy"
+                    alt="Browser dashboard for the ASL classifier showing 64.8 microsecond latency, INT8 precision, 28 by 28 input and 24 classes, with the Basys 3 board inset at lower right.">
+                <figcaption>Host dashboard driving the Basys 3 over serial — test image, prediction, and live upload
+                    pipeline.</figcaption>
+            </figure>
+
             <section class="index">
                 <h2 class="index-title">Stack</h2>
 
@@ -74,6 +81,11 @@
                     <li>Extending verification with SystemVerilog assertions discharged formally in SymbiYosys —
                         proving accumulator overflow cannot occur for any legal input sequence, and that the datapath
                         handshake is deadlock-free</li>
+                    <li>A browser dashboard drives the board over serial — pick a test image or drop in a photo, which
+                        is converted to grayscale, centre-cropped and downsampled to 28×28 to match the training
+                        distribution</li>
+                    <li>Every prediction is checked against a software reference model running the same quantized
+                        weights, so a hardware/software mismatch is immediately visible</li>
                 </ul>
             </section>
 
@@ -92,8 +104,20 @@
                                 <td>~92%</td>
                             </tr>
                             <tr>
+                                <td>Inference latency</td>
+                                <td>64.8 μs</td>
+                            </tr>
+                            <tr>
                                 <td>Clock</td>
                                 <td>100 MHz</td>
+                            </tr>
+                            <tr>
+                                <td>Input</td>
+                                <td>28 × 28, 784-byte vector</td>
+                            </tr>
+                            <tr>
+                                <td>Classes</td>
+                                <td>24, A–Z excluding motion letters</td>
                             </tr>
                             <tr>
                                 <td>External memory</td>
@@ -108,12 +132,24 @@
                 </div>
             </section>
 
+            <section class="section">
+                <h2 class="section-title">Honest state of the project</h2>
+
+                <p>The first version of this RTL was written with heavy AI assistance. It runs on the board and the
+                    numbers are real, but I am rebuilding the datapath by hand — accumulator sizing, quantization
+                    scaling and the control FSM — so that I can defend every line of it. I would rather say that plainly
+                    than be caught out on it in a whiteboard session.</p>
+
+                <p>The MLP was the right first target for learning the toolchain, but the interesting hardware problem
+                    is a systolic or tiled MAC array with proper weight reuse. That's the next build.</p>
+            </section>
+
             <p class="footnote"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
                     rel="noopener noreferrer">Source and demo on GitHub</a></p>
         </main>
 
         <footer class="foot">
-            <span id="location-time">Cleveland, Ohio</span>
+            <span id="location-time">Columbus, Ohio</span>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>

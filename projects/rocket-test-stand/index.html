@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Rocket Motor Static Test Stand — Luke Schreiber</title>
+    <meta name="description"
+        content="Electrical lead on a five-intern NASA Glenn design challenge — an instrumented static test stand measuring thrust and exhaust temperature from commercial rocket motors at 80 Hz, validated against published thrust curves.">
+    <link rel="canonical" href="https://lukeschreiber.com/projects/rocket-test-stand/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukeschreiber.com/projects/rocket-test-stand/">
+    <meta property="og:title" content="Solid Rocket Motor Static Test Stand">
+    <meta property="og:description"
+        content="An instrumented static test stand measuring real thrust and exhaust temperature, reproducing published thrust curves to 0.1% on total impulse.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@LukeSchreiberX">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <a class="back" href="../../">← Luke Schreiber</a>
+
+            <h1 class="name page-title">Solid Rocket Motor Static Test Stand</h1>
+            <p class="meta">NASA Glenn student design challenge · Summer 2026</p>
+
+            <div class="prose">
+                <p>Build a stand that measures real thrust and exhaust temperature from commercial model rocket motors,
+                    then use the measured curves to size a staged vehicle for a defined mission. Published manufacturer
+                    thrust curves are the industry reference — we wanted to know how closely a low-cost instrumented
+                    stand could reproduce them, and where the error actually comes from.</p>
+            </div>
+
+            <section class="index">
+                <h2 class="index-title">Role</h2>
+
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">My role</span>
+                        <span class="row-main">Electrical lead — instrumentation, control logic, firmware, data
+                            analysis</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Team</span>
+                        <span class="row-main">5 interns across EE, ME, AE and CS</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Timeline</span>
+                        <span class="row-main">Summer 2026 · 10 weeks</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Stack</span>
+                        <span class="row-main">Arduino C++, HX711, Thermocouple, SD, SOLIDWORKS, Python</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Why the design changed</h2>
+
+                <p class="section-note">Three revisions: a vertical 80/20 frame, a horizontal sled, and the final
+                    optical-table mounted stand.</p>
+
+                <p>The vertical stand loaded the motor along gravity, which was the physically cleaner arrangement — but
+                    once printed and assembled it weighed about 11 oz against a 4 oz target. That dead mass sat directly
+                    in the load path and swamped the thrust signal from the smaller motors. Rather than chase weight out
+                    of the structure, we rotated the whole design horizontal, which removes stand weight from the
+                    measurement entirely. Several 3D-printed parts from the vertical prototype carried straight over.</p>
+
+                <div class="cols">
+                    <div>
+                        <p class="col-label">Arguments for vertical</p>
+                        <ul class="work-list">
+                            <li>Thrust axis aligned with gravity; reduces side loads and bending moments on the
+                                mounts</li>
+                            <li>Black powder combustion behaves more like a real launch; hot gas doesn't pool to one
+                                side</li>
+                            <li>Simpler alignment of the motor to the load path</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="col-label">Arguments against</p>
+                        <ul class="work-list">
+                            <li>Exhaust reflects back up into the wiring and printed parts</li>
+                            <li>Stand mass sits in the measurement and has to be subtracted out</li>
+                            <li>Engine install and wiring access are both worse; tipping, vibration and twisting all in
+                                play</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-note">Structural validation in SOLIDWORKS FEA: the top plate reaches a maximum stress
+                    of 1.04 × 10⁷ N/m² at a minimum factor of safety of 5.7, and the back base bracket 1.236 × 10⁷ N/m²
+                    at 4.9.</p>
+            </section>
+
+            <section class="index">
+                <h2 class="index-title">Instrumentation</h2>
+
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">Sample rate</span>
+                        <span class="row-main">80 Hz — load cell and thermocouple</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Load cell</span>
+                        <span class="row-main">12.5 kg, HX711 amplifier</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Ignition window</span>
+                        <span class="row-main">4 s, firmware-limited</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Arm sequence</span>
+                        <span class="row-main">2-button, electrically isolated firing circuit</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">What I built</h2>
+
+                <ul class="work-list">
+                    <li>Arduino C++ firmware handling acquisition, display, logging and ignition in a single
+                        deterministic loop — load cell and thermocouple sampled, converted to thrust and temperature,
+                        written to SD as CSV</li>
+                    <li>Dual-button arm/launch interlock: the stand cannot fire unless it is armed and the launch button
+                        is pressed. Red indicator flashes while armed, goes solid on fire</li>
+                    <li>Firing circuit electrically isolated from the sensor circuit so ignition current cannot corrupt
+                        the thrust trace</li>
+                    <li>Ignition signal hard-limited to 4 seconds, with logging continuing straight through the burn and
+                        a manual abort path from any state</li>
+                    <li>LCD showing live thrust, temperature, elapsed time and arm/ready status for the operator at the
+                        stand</li>
+                    <li>Soldered and assembled the wiring harnesses; documented the build and the calibration
+                        procedure</li>
+                </ul>
+
+                <p class="section-note">Firmware states: boot → standby → running/safe → armed → firing →
+                    post-launch.</p>
+
+                <p>10 Hz was enough to see the burn envelope but blurred the ignition spike, which is where the peak
+                    thrust lives. We moved to 80 Hz — enough resolution to catch the transient without outrunning the
+                    HX711 or the SD write.</p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Measured vs. published</h2>
+
+                <p class="section-note">Four Estes motor classes fired and logged. Raw CSV was cleaned and plotted
+                    through a small Python pipeline, then each measured curve was compared against the published
+                    ThrustCurve reference for that motor. Impulse is total impulse; I<sub>sp</sub> is specific
+                    impulse.</p>
+
+                <div class="table-wrap">
+                    <table class="data-table data-table--tight">
+                        <thead>
+                            <tr>
+                                <th>Motor</th>
+                                <th>Max thrust</th>
+                                <th>Impulse</th>
+                                <th>I<sub>sp</sub></th>
+                                <th>Peak exhaust</th>
+                                <th>Δ thrust</th>
+                                <th>Δ impulse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Estes B6</td>
+                                <td>9.22 N</td>
+                                <td>5.00 N·s</td>
+                                <td>62.03 s</td>
+                                <td>241 °F</td>
+                                <td>23.8%</td>
+                                <td>16.3%</td>
+                            </tr>
+                            <tr>
+                                <td>Estes D12</td>
+                                <td>24.66 N</td>
+                                <td>17.99 N·s</td>
+                                <td>76.12 s</td>
+                                <td>1420 °F</td>
+                                <td>17.0%</td>
+                                <td>7.1%</td>
+                            </tr>
+                            <tr>
+                                <td>Estes E12</td>
+                                <td>25.28 N</td>
+                                <td>32.13 N·s</td>
+                                <td>83.71 s</td>
+                                <td>1421 °F</td>
+                                <td>24.1%</td>
+                                <td>18.1%</td>
+                            </tr>
+                            <tr>
+                                <td>Estes F15</td>
+                                <td>29.74 N</td>
+                                <td>49.66 N·s</td>
+                                <td>87.11 s</td>
+                                <td>1425 °F</td>
+                                <td>17.5%</td>
+                                <td>0.1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Impulse tracked the reference far better than peak thrust — the F15 came in at 0.1% on total impulse
+                    while still showing 17.5% on peak. Integrating over the burn averages out the transient error that a
+                    single peak sample carries.</p>
+
+                <ul class="work-list">
+                    <li>Load cell hysteresis as thrust rises and falls across the burn — the dominant term, and the
+                        reason peak thrust deviates more than total impulse</li>
+                    <li>Sensor non-linearity and quantization; uncertainty in the calibration weights themselves
+                        propagates into every reading</li>
+                    <li>Sled friction in the horizontal configuration, plus possible heating of the load cell during
+                        longer burns</li>
+                    <li>Component degradation across repeated firings</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Mission application</h2>
+
+                <p>Using the measured impulse rather than published values, the team sized a staged vehicle to reach the
+                    Hubble Space Telescope's orbit at 483 km. Vis-viva gives 7.626 km/s for the circular orbit; adding
+                    gravity and drag losses of 1.4 and 0.2 km/s puts the requirement at 9.226 km/s. Two staged D12
+                    motors deliver 9.333 km/s across 963.9 g of propellant — enough margin to also cover a Hohmann
+                    transfer up to 600 km.</p>
+
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>Motor</th>
+                                <th>Mass before burn</th>
+                                <th>Mass after burn</th>
+                                <th>Stage Δv</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Stage 1</td>
+                                <td>Estes D12</td>
+                                <td>1006.1 g</td>
+                                <td>524.2 g</td>
+                                <td>1.460 km/s</td>
+                            </tr>
+                            <tr>
+                                <td>Stage 2</td>
+                                <td>Estes D12</td>
+                                <td>710.3 g</td>
+                                <td>21.1 g</td>
+                                <td>7.873 km/s</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>963.9 g propellant</td>
+                                <td>9.333 km/s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">What went wrong, and what it taught me</h2>
+
+                <ul class="work-list">
+                    <li>Lost a full run. The load cell terminal block didn't make complete contact during the C6 test —
+                        no thrust data captured. The fix was mechanical, not electrical: strain relief, and a connection
+                        check added to the pre-fire checklist</li>
+                    <li>Thin, short load cell leads made every reconnection a risk. On a rebuild I'd pigtail them to a
+                        proper terminal immediately rather than working the original wire</li>
+                    <li>Intermittent LCD language changes pointed at a noisy or marginal data line — a reminder that a
+                        display glitch on a test stand is a signal integrity symptom, not a cosmetic one</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="foot">
+            <span id="location-time">Columbus, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
+        </footer>
+    </div>
+
+    <script src="../../theme.js"></script>
+</body>
+
+</html>

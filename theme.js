@@ -27,7 +27,7 @@
         });
     }
 
-    // "9:41am in Cleveland, Ohio" — the visitor's own clock, my city.
+    // "9:41am in Columbus, Ohio" — the visitor's own clock, my city.
     var clock = document.getElementById('location-time');
     if (clock) {
         var updateTime = function () {
@@ -36,7 +36,7 @@
                 minute: '2-digit',
                 hour12: true
             });
-            clock.textContent = time.replace(/\s/g, '').toLowerCase() + ' in Cleveland, Ohio';
+            clock.textContent = time.replace(/\s/g, '').toLowerCase() + ' in Columbus, Ohio';
         };
         updateTime();
         setInterval(updateTime, 30000);
