@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbell Velocity Tracker — Luke Schreiber</title>
+    <title>VeloLift — Barbell Velocity Tracker — Luke Schreiber</title>
     <meta name="description"
-        content="A rotary encoder, real-time C++ data acquisition, and a local web app that measures barbell velocity without sending anything to the cloud.">
+        content="A rotary encoder, interrupt-driven C++ data acquisition, and a local web app that measures barbell velocity without sending anything to the cloud.">
     <link rel="canonical" href="https://lukeschreiber.com/projects/barbell-velocity-tracker/">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lukeschreiber.com/projects/barbell-velocity-tracker/">
-    <meta property="og:title" content="Barbell Velocity Tracker">
+    <meta property="og:title" content="VeloLift — Barbell Velocity Tracker">
     <meta property="og:description"
         content="Encoder data acquisition and a live velocity readout that never leaves the device.">
     <meta name="twitter:card" content="summary">
@@ -25,12 +25,13 @@
         <main>
             <a class="back" href="../../">← Luke Schreiber</a>
 
-            <h1 class="name page-title">Barbell Velocity Tracker</h1>
-            <p class="meta">C++ · Arduino</p>
+            <h1 class="name page-title">VeloLift — Barbell Velocity Tracker</h1>
+            <p class="meta">C++ · Arduino · FastAPI</p>
 
             <div class="prose">
-                <p>Instrumenting a piece of gym equipment end to end — a rotary encoder on the bar, filtered velocity
-                    computed in real time, and a readout that never leaves the device.</p>
+                <p>Velocity-based training uses bar speed as a live proxy for fatigue and effort — but commercial
+                    trackers cost several hundred dollars. This is a tethered encoder measuring bar displacement
+                    directly, streaming velocity to a logger that records what actually happened on each rep.</p>
             </div>
 
             <section class="index">
@@ -39,7 +40,7 @@
                 <div class="rows">
                     <div class="row row--pair">
                         <span class="row-key">Hardware</span>
-                        <span class="row-main">Arduino Uno, 600 P/R Rotary Encoder, C++</span>
+                        <span class="row-main">Arduino Uno/Nano, 600 PPR Rotary Encoder, C++</span>
                     </div>
 
                     <div class="row row--pair">
@@ -56,29 +57,78 @@
                         <span class="row-key">Mechanical</span>
                         <span class="row-main">OpenSCAD, 3D Printing</span>
                     </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Status</span>
+                        <span class="row-main">Working prototype, in use in the gym</span>
+                    </div>
                 </div>
             </section>
 
             <section class="section">
-                <h2 class="section-title">The build</h2>
+                <h2 class="section-title">Signal path</h2>
 
                 <ul class="work-list">
-                    <li>Real-time C++ acquisition reads a 600 pulse-per-revolution rotary encoder and computes bar
-                        velocity, with digital filtering to pull the signal out of the noise a moving barbell
-                        generates</li>
-                    <li>Packaged the sensor in 3D-printed housings modeled parametrically in OpenSCAD, so the mount
-                        adapts to different bars without a redesign</li>
-                    <li>A local web app reads the serial stream through a FastAPI backend and shows velocity live — no
-                        accounts, no cloud, and all data stays on the machine it was measured on</li>
+                    <li>The encoder is tied to the bar; pin A is on a hardware interrupt and pin B is read inside the
+                        ISR to resolve direction, so up and down are signed rather than absolute</li>
+                    <li>Pulses convert to distance through a measured spool circumference and 600 pulses/rev,
+                        differentiated over a fixed 100 ms window; a deadband under 0.05 m/s keeps a shaking rack from
+                        registering as movement</li>
+                    <li>Serial at 115200 baud into a FastAPI service, which streams at 50 Hz over WebSocket to the
+                        frontend and auto-detects the Arduino port</li>
+                    <li>Rep counting is a direction-based state machine on the velocity sign — no manual rep entry</li>
+                    <li>3D-printed enclosure modeled parametrically in OpenSCAD; set history stored locally in
+                        IndexedDB, so no accounts, no cloud, and all data stays on the machine it was measured on</li>
                 </ul>
             </section>
 
-            <p class="footnote"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
+            <section class="section">
+                <h2 class="section-title">Encoder firmware</h2>
+
+                <p class="section-note">Interrupt-driven counting with direction resolution.</p>
+
+                <pre><code>volatile long pulseCount = 0;
+
+// ISR: fires on every rising edge of channel A.
+// Channel B is sampled inside the ISR to resolve direction.
+void handleEncoder() {
+  if (digitalRead(pinB) == HIGH) pulseCount--;  // bar descending
+  else                           pulseCount++;  // bar ascending
+}
+
+// 100 ms window -> signed velocity in m/s
+noInterrupts();
+long currentPulses = pulseCount; pulseCount = 0;
+interrupts();
+float velocity = (currentPulses * metersPerPulse) / 0.1;</code></pre>
+
+                <ul class="work-list">
+                    <li>Counting in an ISR rather than polling — at 600 PPR and useful bar speeds the pulse rate
+                        outruns any loop that also has to talk over serial</li>
+                    <li>The pulse counter is copied out with interrupts disabled, then zeroed, so a pulse arriving
+                        mid-read can't be double counted or lost</li>
+                    <li>Velocity is computed on the Arduino, not the host, so the timing base stays on the device that
+                        owns the interrupt. Sign convention puts positive upward, which makes the concentric phase
+                        trivially separable for rep detection</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Reading the data</h2>
+
+                <p>In a recorded squat set, rep 1 comes in low — that's the unrack and setup, not a working rep. Reps 2
+                    through 4 hold 0.32–0.33 m/s average with only 2% velocity drop, which says the load was well under
+                    the point where bar speed starts to decay.</p>
+            </section>
+
+            <p class="footnote"><a href="https://github.com/LukeSchreiber/VeloLift" target="_blank"
+                    rel="noopener noreferrer">Source on GitHub</a> · <a
+                    href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
                     rel="noopener noreferrer">Demo on X</a></p>
         </main>
 
         <footer class="foot">
-            <span id="location-time">Cleveland, Ohio</span>
+            <span id="location-time">Columbus, Ohio</span>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>
