@@ -22,47 +22,45 @@
 
 <body>
     <div class="container">
-        <header>
-            <div class="logo"><a href="../../">Luke Schreiber</a></div>
-            <nav>
-                <a href="../../books/">Books</a>
-                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
-                <button class="theme-toggle" id="themeToggle">☀</button>
-            </nav>
-        </header>
-
         <main>
-            <a class="back-link" href="../../">← Projects</a>
+            <a class="back" href="../../">← Luke Schreiber</a>
 
-            <h1 class="page-title">Model Rocket &amp; ESP32 Flight Computer</h1>
+            <h1 class="name page-title">Model Rocket &amp; ESP32 Flight Computer</h1>
+            <p class="meta">Embedded C++ · ESP32-S3</p>
 
-            <p class="lede">A rocket built from scratch, a flight computer built from parts instead of bought, and a
-                log pulled off the flash afterward that matched the pre-flight simulation to 0.2%.</p>
-
-            <div class="tech-grid">
-                <div class="tech-group">
-                    <h4>Avionics</h4>
-                    <p>ESP32-S3, BME280 over I²C, TPS61023 Boost Converter</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Firmware</h4>
-                    <p>Embedded C++, 20 Hz Logging to LittleFS Flash</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Airframe</h4>
-                    <p>SOLIDWORKS, OpenRocket, 3D Printing</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Recovery</h4>
-                    <p>Parachute on Motor Ejection Charge</p>
-                </div>
+            <div class="prose">
+                <p>A rocket built from scratch, a flight computer built from parts instead of bought, and a log pulled
+                    off the flash afterward that matched the pre-flight simulation to 0.2%.</p>
             </div>
 
-            <section>
-                <h2 class="section-title">The Build</h2>
+            <section class="index">
+                <h2 class="index-title">Stack</h2>
+
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">Avionics</span>
+                        <span class="row-main">ESP32-S3, BME280 over I²C, TPS61023 Boost Converter</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Firmware</span>
+                        <span class="row-main">Embedded C++, 20 Hz Logging to LittleFS Flash</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Airframe</span>
+                        <span class="row-main">SOLIDWORKS, OpenRocket, 3D Printing</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Recovery</span>
+                        <span class="row-main">Parachute on Motor Ejection Charge</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">The build</h2>
 
                 <ul class="work-list">
                     <li>Built the flight computer from discrete parts on soldered perfboard instead of buying an
@@ -83,8 +81,8 @@
                 </ul>
             </section>
 
-            <section>
-                <h2 class="section-title">Measured vs. Predicted</h2>
+            <section class="section">
+                <h2 class="section-title">Measured vs. predicted</h2>
 
                 <p class="section-note">The OpenRocket model was built before the flight. 401 samples came back off the
                     flash afterward.</p>
@@ -139,14 +137,14 @@
                 </ul>
             </section>
 
-            <p class="project-link"><a href="https://github.com/LukeSchreiber/High-Power-Rocket-and-Flight-Computer"
+            <p class="footnote"><a href="https://github.com/LukeSchreiber/High-Power-Rocket-and-Flight-Computer"
                     target="_blank" rel="noopener noreferrer">Firmware, CAD, and flight data on GitHub</a> · Two-person
                 build with Adriano Zagar</p>
         </main>
 
-        <footer class="footer-spaced">
-            <div>&copy; 2026 Luke Schreiber</div>
-            <div id="location-time">Cleveland, OH</div>
+        <footer class="foot">
+            <span id="location-time">Cleveland, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>
 

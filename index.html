@@ -22,130 +22,132 @@
 
 <body>
     <div class="container">
-        <header>
-            <h1 class="logo"><a href="./">Luke Schreiber</a></h1>
-            <nav>
-                <a href="books/">Books</a>
-                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
-                <button class="theme-toggle" id="themeToggle">☀</button>
-            </nav>
-        </header>
-
         <main>
-            <p class="intro">
-                Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA
-                Glenn.
-            </p>
+            <h1 class="name">Luke Schreiber</h1>
+            <p class="meta">Updated Sep 6, 2026</p>
 
-            <section>
-                <h2 class="section-title">Work</h2>
+            <div class="prose">
+                <p>I live in Cleveland, Ohio, and study electrical and computer engineering at <a
+                        href="https://www.osu.edu" target="_blank" rel="noopener noreferrer">The Ohio State
+                        University</a>.</p>
 
-                <article class="entry entry-tight">
-                    <div class="entry-head">
-                        <h3>Electrical Test Engineer Intern</h3>
-                        <span class="entry-date">Summer 2026</span>
-                    </div>
-                    <div class="entry-sub">
-                        <span>HX5 — NASA Glenn Research Center</span>
-                        <span class="entry-place">Cleveland, OH</span>
-                    </div>
-                    <p class="entry-note">Firmware and wiring for a rocket static test stand, plus instrumentation and
-                        PLC controls for vacuum chamber test facilities.</p>
-                </article>
-            </section>
+                <p>This past summer I was an electrical test engineer intern at <a href="https://www.nasa.gov/glenn"
+                        target="_blank" rel="noopener noreferrer">NASA Glenn Research Center</a>, through HX5, writing
+                    firmware and wiring for a rocket static test stand, plus instrumentation and PLC controls for vacuum
+                    chamber test facilities.</p>
 
-            <section>
-                <h2 class="section-title">Projects</h2>
+                <p>Most of what I build sits on the line between hardware and software. I built a <a
+                        href="projects/rocket-flight-computer/">model rocket and ESP32 flight computer</a> that flew to
+                    390.7 ft and matched its simulated apogee to 0.2%, a <a
+                        href="projects/neural-network-accelerator/">neural network inference accelerator</a> that runs
+                    an ASL hand-sign classifier on FPGA fabric at 100 MHz with no CPU, and a <a
+                        href="projects/barbell-velocity-tracker/">barbell velocity tracker</a> whose data never leaves
+                    the device.</p>
 
-                <div class="project-list">
-                    <a class="project-row" href="projects/rocket-flight-computer/">
-                        <span class="project-row-title">Model Rocket &amp; ESP32 Flight Computer</span>
-                        <span class="project-row-tech">Embedded C++ · ESP32-S3</span>
-                        <span class="project-row-note">Flew to 390.7 ft and matched the simulated apogee to
-                            0.2%.</span>
+                <p>Before Ohio State I studied engineering at <a href="https://www.lorainccc.edu" target="_blank"
+                        rel="noopener noreferrer">Lorain County Community College</a>. Outside of school it is AI/ML,
+                    Bitcoin, space, and a long list of <a href="books/">books</a>.</p>
+
+                <p>You can find me on <a href="https://github.com/LukeSchreiber" target="_blank"
+                        rel="noopener noreferrer">GitHub</a>, <a href="https://x.com/LukeSchreiberX" target="_blank"
+                        rel="noopener noreferrer">X</a>, and <a
+                        href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>, or reach me via <a
+                        href="mailto:LukeSchreiber32@gmail.com">email</a>.</p>
+            </div>
+
+            <section class="index">
+                <h2 class="index-title">Projects</h2>
+
+                <div class="rows">
+                    <a class="row row--flush" href="projects/rocket-flight-computer/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Model Rocket &amp; ESP32 Flight Computer</span>
+                        <span class="row-meta">Embedded C++</span>
                     </a>
 
-                    <a class="project-row" href="projects/neural-network-accelerator/">
-                        <span class="project-row-title">Neural Network Inference Accelerator</span>
-                        <span class="project-row-tech">Verilog · Artix-7</span>
-                        <span class="project-row-note">An ASL hand-sign classifier running on FPGA fabric at 100 MHz,
-                            no CPU.</span>
+                    <a class="row row--flush" href="projects/neural-network-accelerator/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Neural Network Inference Accelerator</span>
+                        <span class="row-meta">Verilog</span>
                     </a>
 
-                    <a class="project-row" href="projects/barbell-velocity-tracker/">
-                        <span class="project-row-title">Barbell Velocity Tracker</span>
-                        <span class="project-row-tech">C++ · Arduino</span>
-                        <span class="project-row-note">Encoder data acquisition and a live readout that never leaves
-                            the device.</span>
+                    <a class="row row--flush" href="projects/barbell-velocity-tracker/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Barbell Velocity Tracker</span>
+                        <span class="row-meta">C++</span>
                     </a>
                 </div>
             </section>
 
-            <section>
-                <h2 class="section-title">Education</h2>
+            <section class="index">
+                <h2 class="index-title">Work</h2>
 
-                <article class="entry entry-tight">
-                    <div class="entry-head">
-                        <h3>The Ohio State University</h3>
-                        <span class="entry-date">2026 – 2029</span>
+                <div class="rows">
+                    <div class="row">
+                        <span class="row-key">2026</span>
+                        <span class="row-main">Electrical Test Engineer Intern</span>
+                        <span class="row-meta">HX5 · NASA Glenn</span>
                     </div>
-                    <div class="entry-sub">
-                        <span>B.S. Electrical and Computer Engineering</span>
-                        <span class="entry-place">Columbus, OH</span>
-                    </div>
-                </article>
-
-                <article class="entry entry-tight">
-                    <div class="entry-head">
-                        <h3>Lorain County Community College</h3>
-                        <span class="entry-date">2025 – 2026</span>
-                    </div>
-                    <div class="entry-sub">
-                        <span>A.S. Engineering — GPA 3.53</span>
-                        <span class="entry-place">Elyria, OH</span>
-                    </div>
-                </article>
+                </div>
             </section>
 
-            <section>
-                <h2 class="section-title">Skills</h2>
+            <section class="index">
+                <h2 class="index-title">Education</h2>
 
-                <dl class="skills">
-                    <dt>Languages</dt>
-                    <dd>Python, C++, Verilog, SystemVerilog, MATLAB</dd>
+                <div class="rows">
+                    <div class="row">
+                        <span class="row-key">2026 – 2029</span>
+                        <span class="row-main">B.S. Electrical &amp; Computer Engineering</span>
+                        <span class="row-meta">Ohio State</span>
+                    </div>
 
-                    <dt>Digital Design</dt>
-                    <dd>Vivado, SystemVerilog Assertions, Formal Verification (SymbiYosys), Self-Checking Testbenches
-                    </dd>
-
-                    <dt>Hardware</dt>
-                    <dd>SOLIDWORKS, OpenSCAD, OpenRocket, PLCs, DAQ, Load Cells, I²C Sensors, Arduino &amp; ESP32-S3,
-                        Soldering</dd>
-
-                    <dt>AI</dt>
-                    <dd>PyTorch, AI Agents &amp; Agentic Workflows, LLM-Assisted Development, Claude Code</dd>
-
-                    <dt>Tooling</dt>
-                    <dd>Git, Linux, Bash</dd>
-                </dl>
+                    <div class="row">
+                        <span class="row-key">2025 – 2026</span>
+                        <span class="row-main">A.S. Engineering</span>
+                        <span class="row-meta">Lorain County CC · GPA 3.53</span>
+                    </div>
+                </div>
             </section>
 
-            <p class="outro">
-                Outside of that: AI/ML, Bitcoin, reading, and space.
-            </p>
+            <section class="index">
+                <h2 class="index-title">Skills</h2>
 
-            <div class="contact">
-                <a href="mailto:LukeSchreiber32@gmail.com">LukeSchreiber32@gmail.com</a> · <a
-                    href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">@LukeSchreiberX</a>
-            </div>
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">Languages</span>
+                        <span class="row-main">Python, C++, Verilog, SystemVerilog, MATLAB</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Digital Design</span>
+                        <span class="row-main">Vivado, SystemVerilog Assertions, Formal Verification (SymbiYosys),
+                            Self-Checking Testbenches</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Hardware</span>
+                        <span class="row-main">SOLIDWORKS, OpenSCAD, OpenRocket, PLCs, DAQ, Load Cells, I²C Sensors,
+                            Arduino &amp; ESP32-S3, Soldering</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">AI</span>
+                        <span class="row-main">PyTorch, AI Agents &amp; Agentic Workflows, LLM-Assisted Development,
+                            Claude Code</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Tooling</span>
+                        <span class="row-main">Git, Linux, Bash</span>
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <footer>
-            <div>&copy; 2026 Luke Schreiber</div>
-            <div id="location-time">Cleveland, OH</div>
+        <footer class="foot">
+            <span id="location-time">Cleveland, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>
 

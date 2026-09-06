@@ -3,7 +3,16 @@
     var html = document.documentElement;
     var toggle = document.getElementById('themeToggle');
 
-    var stored = localStorage.getItem('theme') || 'light';
+    // Blocked site data throws on access, so never let storage break the page.
+    var read = function () {
+        try {
+            return localStorage.getItem('theme');
+        } catch (e) {
+            return null;
+        }
+    };
+
+    var stored = read() || 'light';
     html.setAttribute('data-theme', stored);
 
     if (toggle) {
@@ -11,22 +20,25 @@
         toggle.addEventListener('click', function () {
             var theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
+            try {
+                localStorage.setItem('theme', theme);
+            } catch (e) { /* preference just won't persist */ }
             toggle.textContent = theme === 'dark' ? '☾' : '☀';
         });
     }
 
+    // "9:41am in Cleveland, Ohio" — the visitor's own clock, my city.
     var clock = document.getElementById('location-time');
     if (clock) {
         var updateTime = function () {
             var time = new Date().toLocaleTimeString('en-US', {
-                hour: '2-digit',
+                hour: 'numeric',
                 minute: '2-digit',
                 hour12: true
             });
-            clock.textContent = 'Cleveland, OH · ' + time;
+            clock.textContent = time.replace(/\s/g, '').toLowerCase() + ' in Cleveland, Ohio';
         };
         updateTime();
-        setInterval(updateTime, 60000);
+        setInterval(updateTime, 30000);
     }
 })();

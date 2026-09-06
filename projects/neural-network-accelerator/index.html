@@ -22,47 +22,45 @@
 
 <body>
     <div class="container">
-        <header>
-            <div class="logo"><a href="../../">Luke Schreiber</a></div>
-            <nav>
-                <a href="../../books/">Books</a>
-                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
-                <button class="theme-toggle" id="themeToggle">☀</button>
-            </nav>
-        </header>
-
         <main>
-            <a class="back-link" href="../../">← Projects</a>
+            <a class="back" href="../../">← Luke Schreiber</a>
 
-            <h1 class="page-title">Neural Network Inference Accelerator</h1>
+            <h1 class="name page-title">Neural Network Inference Accelerator</h1>
+            <p class="meta">Verilog · Artix-7</p>
 
-            <p class="lede">A 24-class ASL hand-sign classifier trained in PyTorch, then quantized and rebuilt as
-                hardware — inference runs entirely on FPGA fabric at 100 MHz with no CPU and no external memory.</p>
-
-            <div class="tech-grid">
-                <div class="tech-group">
-                    <h4>Hardware</h4>
-                    <p>Xilinx Artix-7 XC7A35T, Digilent Basys 3</p>
-                </div>
-                <div class="tech-group">
-                    <h4>RTL</h4>
-                    <p>Verilog, Vivado, DSP48E1 MAC Array</p>
-                </div>
-                <div class="tech-group">
-                    <h4>ML Pipeline</h4>
-                    <p>PyTorch, INT8 Post-Training Quantization</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Verification</h4>
-                    <p>Golden Model, Self-Checking Testbenches, SymbiYosys</p>
-                </div>
+            <div class="prose">
+                <p>A 24-class ASL hand-sign classifier trained in PyTorch, then quantized and rebuilt as hardware —
+                    inference runs entirely on FPGA fabric at 100 MHz with no CPU and no external memory.</p>
             </div>
 
-            <section>
-                <h2 class="section-title">The Build</h2>
+            <section class="index">
+                <h2 class="index-title">Stack</h2>
+
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">Hardware</span>
+                        <span class="row-main">Xilinx Artix-7 XC7A35T, Digilent Basys 3</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">RTL</span>
+                        <span class="row-main">Verilog, Vivado, DSP48E1 MAC Array</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">ML Pipeline</span>
+                        <span class="row-main">PyTorch, INT8 Post-Training Quantization</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Verification</span>
+                        <span class="row-main">Golden Model, Self-Checking Testbenches, SymbiYosys</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">The build</h2>
 
                 <ul class="work-list">
                     <li>Trained a 784→128→24 classifier in PyTorch, then built the accelerator to run that same network
@@ -79,7 +77,7 @@
                 </ul>
             </section>
 
-            <section>
+            <section class="section">
                 <h2 class="section-title">Results</h2>
 
                 <div class="table-wrap">
@@ -110,13 +108,13 @@
                 </div>
             </section>
 
-            <p class="project-link"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
+            <p class="footnote"><a href="https://github.com/LukeSchreiber/fpga-nn-accel" target="_blank"
                     rel="noopener noreferrer">Source and demo on GitHub</a></p>
         </main>
 
-        <footer class="footer-spaced">
-            <div>&copy; 2026 Luke Schreiber</div>
-            <div id="location-time">Cleveland, OH</div>
+        <footer class="foot">
+            <span id="location-time">Cleveland, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>
 

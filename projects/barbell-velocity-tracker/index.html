@@ -22,47 +22,45 @@
 
 <body>
     <div class="container">
-        <header>
-            <div class="logo"><a href="../../">Luke Schreiber</a></div>
-            <nav>
-                <a href="../../books/">Books</a>
-                <a href="https://github.com/LukeSchreiber" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/luke-schreiber-92649a355/" target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://x.com/LukeSchreiberX" target="_blank" rel="noopener noreferrer">X</a>
-                <button class="theme-toggle" id="themeToggle">☀</button>
-            </nav>
-        </header>
-
         <main>
-            <a class="back-link" href="../../">← Projects</a>
+            <a class="back" href="../../">← Luke Schreiber</a>
 
-            <h1 class="page-title">Barbell Velocity Tracker</h1>
+            <h1 class="name page-title">Barbell Velocity Tracker</h1>
+            <p class="meta">C++ · Arduino</p>
 
-            <p class="lede">Instrumenting a piece of gym equipment end to end — a rotary encoder on the bar, filtered
-                velocity computed in real time, and a readout that never leaves the device.</p>
-
-            <div class="tech-grid">
-                <div class="tech-group">
-                    <h4>Hardware</h4>
-                    <p>Arduino Uno, 600 P/R Rotary Encoder, C++</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Frontend</h4>
-                    <p>React 19, Vite 7, Tailwind 4</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Backend</h4>
-                    <p>FastAPI, Python, pyserial</p>
-                </div>
-                <div class="tech-group">
-                    <h4>Mechanical</h4>
-                    <p>OpenSCAD, 3D Printing</p>
-                </div>
+            <div class="prose">
+                <p>Instrumenting a piece of gym equipment end to end — a rotary encoder on the bar, filtered velocity
+                    computed in real time, and a readout that never leaves the device.</p>
             </div>
 
-            <section>
-                <h2 class="section-title">The Build</h2>
+            <section class="index">
+                <h2 class="index-title">Stack</h2>
+
+                <div class="rows">
+                    <div class="row row--pair">
+                        <span class="row-key">Hardware</span>
+                        <span class="row-main">Arduino Uno, 600 P/R Rotary Encoder, C++</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Frontend</span>
+                        <span class="row-main">React 19, Vite 7, Tailwind 4</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Backend</span>
+                        <span class="row-main">FastAPI, Python, pyserial</span>
+                    </div>
+
+                    <div class="row row--pair">
+                        <span class="row-key">Mechanical</span>
+                        <span class="row-main">OpenSCAD, 3D Printing</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">The build</h2>
 
                 <ul class="work-list">
                     <li>Real-time C++ acquisition reads a 600 pulse-per-revolution rotary encoder and computes bar
@@ -75,13 +73,13 @@
                 </ul>
             </section>
 
-            <p class="project-link"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
+            <p class="footnote"><a href="https://x.com/SuperLuke/status/2019837782789923086" target="_blank"
                     rel="noopener noreferrer">Demo on X</a></p>
         </main>
 
-        <footer class="footer-spaced">
-            <div>&copy; 2026 Luke Schreiber</div>
-            <div id="location-time">Cleveland, OH</div>
+        <footer class="foot">
+            <span id="location-time">Cleveland, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
         </footer>
     </div>
 
