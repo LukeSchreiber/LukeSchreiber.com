@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found — Luke Schreiber</title>
+    <meta name="description" content="That page doesn't exist. Head back to the index.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        // Applied before first paint so a stored dark theme never flashes white.
+        try {
+            var t = localStorage.getItem("theme");
+            if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* blocked site data: fall back to the light default */ }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <h1 class="name">Page not found</h1>
+            <p class="meta">That address doesn't lead anywhere.</p>
+
+            <div class="prose">
+                <p>The page may have moved, or the link may be wrong. <a href="/">Back to the index</a>.</p>
+            </div>
+
+            <section class="index">
+                <h2 class="index-title">Projects</h2>
+
+                <div class="rows">
+                    <a class="row row--flush" href="/projects/rocket-test-stand/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Solid Rocket Motor Test Stand</span>
+                        <span class="row-meta">Arduino C++</span>
+                    </a>
+
+                    <a class="row row--flush" href="/projects/rocket-flight-computer/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Model Rocket &amp; ESP32 Flight Computer</span>
+                        <span class="row-meta">Embedded C++</span>
+                    </a>
+
+                    <a class="row row--flush" href="/projects/neural-network-accelerator/">
+                        <span class="row-key"></span>
+                        <span class="row-main">Neural Network Inference Accelerator</span>
+                        <span class="row-meta">Verilog</span>
+                    </a>
+
+                    <a class="row row--flush" href="/projects/barbell-velocity-tracker/">
+                        <span class="row-key"></span>
+                        <span class="row-main">VeloLift — Barbell Velocity Tracker</span>
+                        <span class="row-meta">C++</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="foot">
+            <span id="location-time">Columbus, Ohio</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀</button>
+        </footer>
+    </div>
+
+    <script src="/theme.js"></script>
+</body>
+
+</html>

@@ -13,11 +13,20 @@
     <meta property="og:title" content="Luke Schreiber">
     <meta property="og:description"
         content="Electrical and computer engineering student at Ohio State, electrical test engineer intern at NASA Glenn.">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://lukeschreiber.com/projects/rocket-flight-computer/img/assembled-rocket.jpg">
+    <meta property="og:image:alt" content="Luke Schreiber holding the model rocket he built.">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@LukeSchreiberX">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Applied before first paint so a stored dark theme never flashes white.
+        try {
+            var t = localStorage.getItem("theme");
+            if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* blocked site data: fall back to the light default */ }
+    </script>
 </head>
 
 <body>

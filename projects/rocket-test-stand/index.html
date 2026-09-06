@@ -18,6 +18,13 @@
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css">
+    <script>
+        // Applied before first paint so a stored dark theme never flashes white.
+        try {
+            var t = localStorage.getItem("theme");
+            if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* blocked site data: fall back to the light default */ }
+    </script>
 </head>
 
 <body>
@@ -166,18 +173,18 @@
                     <table class="data-table data-table--tight">
                         <thead>
                             <tr>
-                                <th>Motor</th>
-                                <th>Max thrust</th>
-                                <th>Impulse</th>
-                                <th>I<sub>sp</sub></th>
-                                <th>Peak exhaust</th>
-                                <th>Δ thrust</th>
-                                <th>Δ impulse</th>
+                                <th scope="col">Motor</th>
+                                <th scope="col">Max thrust</th>
+                                <th scope="col">Impulse</th>
+                                <th scope="col">I<sub>sp</sub></th>
+                                <th scope="col">Peak exhaust</th>
+                                <th scope="col">Δ thrust</th>
+                                <th scope="col">Δ impulse</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Estes B6</td>
+                                <th scope="row">Estes B6</th>
                                 <td>9.22 N</td>
                                 <td>5.00 N·s</td>
                                 <td>62.03 s</td>
@@ -186,7 +193,7 @@
                                 <td>16.3%</td>
                             </tr>
                             <tr>
-                                <td>Estes D12</td>
+                                <th scope="row">Estes D12</th>
                                 <td>24.66 N</td>
                                 <td>17.99 N·s</td>
                                 <td>76.12 s</td>
@@ -195,7 +202,7 @@
                                 <td>7.1%</td>
                             </tr>
                             <tr>
-                                <td>Estes E12</td>
+                                <th scope="row">Estes E12</th>
                                 <td>25.28 N</td>
                                 <td>32.13 N·s</td>
                                 <td>83.71 s</td>
@@ -204,7 +211,7 @@
                                 <td>18.1%</td>
                             </tr>
                             <tr>
-                                <td>Estes F15</td>
+                                <th scope="row">Estes F15</th>
                                 <td>29.74 N</td>
                                 <td>49.66 N·s</td>
                                 <td>87.11 s</td>
@@ -244,30 +251,30 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Stage</th>
-                                <th>Motor</th>
-                                <th>Mass before burn</th>
-                                <th>Mass after burn</th>
-                                <th>Stage Δv</th>
+                                <th scope="col">Stage</th>
+                                <th scope="col">Motor</th>
+                                <th scope="col">Mass before burn</th>
+                                <th scope="col">Mass after burn</th>
+                                <th scope="col">Stage Δv</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Stage 1</td>
+                                <th scope="row">Stage 1</th>
                                 <td>Estes D12</td>
                                 <td>1006.1 g</td>
                                 <td>524.2 g</td>
                                 <td>1.460 km/s</td>
                             </tr>
                             <tr>
-                                <td>Stage 2</td>
+                                <th scope="row">Stage 2</th>
                                 <td>Estes D12</td>
                                 <td>710.3 g</td>
                                 <td>21.1 g</td>
                                 <td>7.873 km/s</td>
                             </tr>
                             <tr>
-                                <td>Total</td>
+                                <th scope="row">Total</th>
                                 <td>—</td>
                                 <td>—</td>
                                 <td>963.9 g propellant</td>

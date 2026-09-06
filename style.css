@@ -287,6 +287,11 @@ p + .work-list {
     color: var(--muted);
 }
 
+/* Row headers carry the same weight as the label cells they replace */
+.data-table th[scope="row"] {
+    white-space: normal;
+}
+
 .data-table td:first-child {
     white-space: normal;
     color: var(--muted);
@@ -349,10 +354,6 @@ figcaption {
     margin: 1.6rem 0;
 }
 
-.cols--3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .cols figure {
     margin: 0;
 }
@@ -395,12 +396,15 @@ figcaption {
 .theme-toggle {
     background: none;
     border: 0;
-    padding: 0;
     font: inherit;
     line-height: inherit;
     color: var(--muted);
     cursor: pointer;
     transition: color 0.15s ease;
+    /* Padding lifts the hit area past the 24px minimum; the negative margin
+       keeps the glyph optically aligned with the column edge. */
+    padding: 0.4rem;
+    margin: -0.4rem -0.4rem -0.4rem 0;
 }
 
 .theme-toggle:hover {
@@ -473,8 +477,19 @@ figcaption {
         padding-right: 1rem;
     }
 
-    .cols,
-    .cols--3 {
+    .cols {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
     }
 }

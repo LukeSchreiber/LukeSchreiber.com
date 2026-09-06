@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books — Luke Schreiber</title>
     <meta name="description" content="Luke Schreiber's favorite books — philosophy, biography, Bitcoin, and fiction. Favorite author: Dostoevsky.">
-    <link rel="canonical" href="https://lukeschreiber.com/books">
+    <link rel="canonical" href="https://lukeschreiber.com/books/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lukeschreiber.com/books">
+    <meta property="og:url" content="https://lukeschreiber.com/books/">
     <meta property="og:title" content="Books — Luke Schreiber">
     <meta property="og:description" content="Favorite books — philosophy, biography, Bitcoin, and fiction. Favorite author: Dostoevsky.">
     <meta name="twitter:card" content="summary">
@@ -16,6 +16,13 @@
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="../style.css">
+    <script>
+        // Applied before first paint so a stored dark theme never flashes white.
+        try {
+            var t = localStorage.getItem("theme");
+            if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* blocked site data: fall back to the light default */ }
+    </script>
 </head>
 
 <body>

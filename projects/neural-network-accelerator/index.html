@@ -13,11 +13,20 @@
     <meta property="og:title" content="Neural Network Inference Accelerator">
     <meta property="og:description"
         content="An ASL hand-sign classifier running on FPGA fabric at 100 MHz — no CPU, no external memory.">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://lukeschreiber.com/projects/neural-network-accelerator/img/host-dashboard.jpg">
+    <meta property="og:image:alt" content="Host dashboard for the FPGA ASL classifier showing 64.8 microsecond inference latency.">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@LukeSchreiberX">
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css">
+    <script>
+        // Applied before first paint so a stored dark theme never flashes white.
+        try {
+            var t = localStorage.getItem("theme");
+            if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* blocked site data: fall back to the light default */ }
+    </script>
 </head>
 
 <body>
@@ -96,35 +105,35 @@
                     <table class="data-table">
                         <tbody>
                             <tr>
-                                <td>Accuracy, FP32 baseline</td>
+                                <th scope="row">Accuracy, FP32 baseline</th>
                                 <td>93%</td>
                             </tr>
                             <tr>
-                                <td>Accuracy, INT8 on hardware</td>
+                                <th scope="row">Accuracy, INT8 on hardware</th>
                                 <td>~92%</td>
                             </tr>
                             <tr>
-                                <td>Inference latency</td>
+                                <th scope="row">Inference latency</th>
                                 <td>64.8 μs</td>
                             </tr>
                             <tr>
-                                <td>Clock</td>
+                                <th scope="row">Clock</th>
                                 <td>100 MHz</td>
                             </tr>
                             <tr>
-                                <td>Input</td>
+                                <th scope="row">Input</th>
                                 <td>28 × 28, 784-byte vector</td>
                             </tr>
                             <tr>
-                                <td>Classes</td>
+                                <th scope="row">Classes</th>
                                 <td>24, A–Z excluding motion letters</td>
                             </tr>
                             <tr>
-                                <td>External memory</td>
+                                <th scope="row">External memory</th>
                                 <td>None</td>
                             </tr>
                             <tr>
-                                <td>Softcore CPU</td>
+                                <th scope="row">Softcore CPU</th>
                                 <td>None</td>
                             </tr>
                         </tbody>
